@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManyChatBot - Operational Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f7;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0071e3;
+            border-bottom: 2px solid #0071e3;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .diagram-container {
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0071e3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ManyChatBot - Operational Flow</h1>
+        <p>This diagram illustrates the end-to-end operational flow of the ManyChatBot business, from lead acquisition through client onboarding and service delivery.</p>
+        
+        <div class="diagram-container">
+            <div class="mermaid">
+flowchart TD
+    subgraph "Lead Acquisition"
+        A[Social Media Marketing] --> B[Website Visit]
+        C[Cold Outreach] --> B
+        D[Referrals] --> B
+        B --> E[Lead Capture Form]
+        B --> F[Book Consultation]
+    end
+    
+    subgraph "Sales Process"
+        E --> G[Automated Follow-up via ManyChat]
+        F --> H[15-min Initial Consultation]
+        G --> H
+        H --> I{Qualified?}
+        I -->|Yes| J[1-hr Proposal Call]
+        I -->|No| K[Nurture Sequence]
+        J --> L[Send Proposal]
+        L --> M{Accepted?}
+        M -->|Yes| N[Collect Deposit]
+        M -->|No| K
+    end
+    
+    subgraph "Onboarding & Implementation"
+        N --> O[Create Notion Client Portal]
+        O --> P[Send Intake Form]
+        P --> Q[ManyChat & Make.com Setup]
+        Q --> R[Build Chatbot Flows]
+        R --> S[Internal Testing]
+        S --> T[Client Review]
+        T --> U{Approved?}
+        U -->|Revisions Needed| R
+        U -->|Yes| V[Final Invoice]
+        V --> W[Deploy Chatbot]
+    end
+    
+    subgraph "Post-Launch"
+        W --> X[2-Week Check-in]
+        X --> Y[30-Day Performance Review]
+        Y --> Z[Ongoing Support/Optimization]
+    end
+            </div>
+        </div>
+
+        <a href="../documents/sales_process.md" class="back-link">← Back to Sales Process Document</a>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif'
+        });
+    </script>
+</body>
+</html>
