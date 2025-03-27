@@ -151,6 +151,7 @@ All packages include our 60-day money-back guarantee and 30-day performance revi
 | **Backend** | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![API](https://img.shields.io/badge/REST_API-0096FF?style=flat-square&logo=fastapi&logoColor=white) |
 | **Integrations** | ![Facebook](https://img.shields.io/badge/Facebook_API-1877F2?style=flat-square&logo=facebook&logoColor=white) ![Calendar](https://img.shields.io/badge/Calendar_API-4285F4?style=flat-square&logo=googlecalendar&logoColor=white) ![Zoom](https://img.shields.io/badge/Zoom_API-2D8CFF?style=flat-square&logo=zoom&logoColor=white) |
 | **Tools** | ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![Analytics](https://img.shields.io/badge/Analytics-E37400?style=flat-square&logo=googleanalytics&logoColor=white) |
+| **AI & Speech** | ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white) ![Gemini](https://img.shields.io/badge/Gemini-886FBF?style=flat-square&logo=googlecloud&logoColor=white) ![DeepGram](https://img.shields.io/badge/DeepGram-00A5FF?style=flat-square&logo=audiomack&logoColor=white) |
 
 </div>
 

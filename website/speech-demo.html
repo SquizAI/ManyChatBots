@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepGram Speech-to-Text Demo | ManyChatBot</title>
+    <meta name="description" content="Test our advanced speech-to-text capabilities powered by DeepGram's AI technology.">
+    
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/speech-to-text.css">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <style>
+        .speech-demo-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .speech-input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .mic-button-large {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #0071e3;
+            color: white;
+            font-size: 40px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 113, 227, 0.3);
+        }
+        
+        .mic-button-large:hover {
+            background-color: #0058b3;
+            transform: scale(1.05);
+        }
+        
+        .mic-button-large.recording {
+            background-color: #ff4c4c;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .transcript-box {
+            width: 100%;
+            min-height: 150px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        .transcript-container {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .transcript-container h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .transcript-status {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .api-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0071e3;
+        }
+        
+        .api-info h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .api-info p {
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .api-info code {
+            background-color: #f1f1f1;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .control-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .control-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .speech-demo-container {
+                padding: 1.5rem;
+                margin: 2rem 1rem;
+            }
+            
+            .demo-header h1 {
+                font-size: 2rem;
+            }
+            
+            .mic-button-large {
+                width: 80px;
+                height: 80px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="ManyChatBot Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html#benefits">Benefits</a></li>
+                        <li><a href="index.html#packages">Packages</a></li>
+                        <li><a href="index.html#process">Process</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#testimonials">Success Stories</a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta">
+                    <a href="index.html#book-consultation" class="btn btn-primary">Book Free Consultation</a>
+                    <a href="/dashboard/login.html" class="btn btn-outline ml-2">Client Login</a>
+                    <a href="/admin/login.html" class="btn btn-text"><i class="fas fa-lock"></i> Admin</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Speech Demo Section -->
+    <section class="speech-demo">
+        <div class="speech-demo-container">
+            <div class="demo-header">
+                <h1>Speech-to-Text Demo</h1>
+                <p>Experience the power of DeepGram's AI-powered speech recognition technology integrated into ManyChatBot's platform.</p>
+            </div>
+            
+            <div class="speech-input-container">
+                <button id="micButton" class="mic-button-large">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <div class="transcript-status" id="statusText">Click the microphone to start speaking</div>
+            </div>
+            
+            <div class="transcript-container">
+                <h3>Transcript</h3>
+                <div id="transcriptBox" class="transcript-box"></div>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="languageSelect">Language</label>
+                    <select id="languageSelect">
+                        <option value="en-US">English (US)</option>
+                        <option value="es-ES">Spanish</option>
+                        <option value="fr-FR">French</option>
+                        <option value="de-DE">German</option>
+                        <option value="ja-JP">Japanese</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="modelSelect">DeepGram Model</label>
+                    <select id="modelSelect">
+                        <option value="nova-2">Nova-2 (Highest Accuracy)</option>
+                        <option value="enhanced">Enhanced</option>
+                        <option value="base">Base (Fastest)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="api-info">
+                <h3>About DeepGram Integration</h3>
+                <p>ManyChatBot uses DeepGram's cutting-edge speech-to-text API to provide accurate transcriptions for voice interactions. This demo showcases the basic functionality, but our complete implementation includes:</p>
+                <ul>
+                    <li>Real-time transcription in the chat widget</li>
+                    <li>Multi-language support for global accessibility</li>
+                    <li>Smart formatting for better readability</li>
+                    <li>Speaker diarization for multi-speaker environments</li>
+                </ul>
+                <p>API endpoint: <code>/api/speech/process</code></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer footer-light">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 ManyChatBot. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Speech Demo -->
+    <script src="js/speech-to-text.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const micButton = document.getElementById('micButton');
+            const transcriptBox = document.getElementById('transcriptBox');
+            const statusText = document.getElementById('statusText');
+            const languageSelect = document.getElementById('languageSelect');
+            const modelSelect = document.getElementById('modelSelect');
+            
+            // Create speech-to-text input instance
+            const speechToText = new SpeechToTextInput({
+                debug: true,
+                useWebsocket: true,
+                language: 'en-US',
+                onTranscriptInterim: (transcript) => {
+                    transcriptBox.textContent = transcript;
+                    statusText.textContent = 'Listening...';
+                },
+                onTranscriptComplete: (transcript, data) => {
+                    transcriptBox.textContent = transcript;
+                    statusText.textContent = 'Finished transcribing';
+                    
+                    // Update confidence if available
+                    if (data && data.confidence) {
+                        const confidence = Math.round(data.confidence * 100);
+                        statusText.textContent += ` (${confidence}% confidence)`;
+                    }
+                    
+                    micButton.classList.remove('recording');
+                }
+            });
+            
+            // Set up microphone button
+            micButton.addEventListener('click', () => {
+                if (micButton.classList.contains('recording')) {
+                    // Stop recording
+                    speechToText.stopRecording();
+                    micButton.classList.remove('recording');
+                    statusText.textContent = 'Processing speech...';
+                } else {
+                    // Start recording with current settings
+                    const language = languageSelect.value;
+                    const model = modelSelect.value;
+                    
+                    // Update options
+                    speechToText.options.language = language;
+                    
+                    // Start recording
+                    speechToText.startRecording()
+                        .then(() => {
+                            micButton.classList.add('recording');
+                            statusText.textContent = 'Listening...';
+                            transcriptBox.textContent = '';
+                        })
+                        .catch(error => {
+                            console.error('Error starting recording:', error);
+                            statusText.textContent = 'Error: ' + (error.message || 'Could not access microphone');
+                        });
+                }
+            });
+            
+            // Handle language change
+            languageSelect.addEventListener('change', () => {
+                speechToText.options.language = languageSelect.value;
+            });
+        });
+    </script>
+</body>
+</html>

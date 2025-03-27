@@ -1,0 +1,33 @@
+[build]
+  base = "/"
+  publish = "website"
+  command = "echo 'No build required'"
+
+# CORS headers for the client dashboard
+[[headers]]
+  for = "/dashboard/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+# CORS headers for the admin dashboard
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+# Redirects for dashboard navigation
+[[redirects]]
+  from = "/dashboard"
+  to = "/dashboard/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+# SPA redirect for client routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
