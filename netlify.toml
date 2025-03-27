@@ -1,7 +1,7 @@
 [build]
   base = "/"
-  publish = "."
-  command = "echo 'No build required'"
+  publish = "website"
+  command = "cp -r dashboard admin website/ && echo 'Copied dashboard and admin to website directory'"
 
 # CORS headers for the client dashboard
 [[headers]]
