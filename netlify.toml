@@ -1,6 +1,6 @@
 [build]
   base = "/"
-  publish = "website"
+  publish = "."
   command = "echo 'No build required'"
 
 # CORS headers for the client dashboard
