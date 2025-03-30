@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations - ManyChatBot Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/conversations.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../website/images/logo.svg" alt="ManyChatBot Logo" class="logo">
+                <span class="close-sidebar"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <span>JS</span>
+                </div>
+                <div class="user-info">
+                    <h4>John Smith</h4>
+                    <p>Professional Plan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="chatbot-builder.html"><i class="fas fa-robot"></i> My Chatbots</a>
+                    </li>
+                    <li class="active">
+                        <a href="conversations.html"><i class="fas fa-comments"></i> Conversations</a>
+                    </li>
+                    <li>
+                        <a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                    <li>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                    <li>
+                        <a href="billing.html"><i class="fas fa-credit-card"></i> Billing</a>
+                    </li>
+                    <li>
+                        <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search conversations...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="conversations-header">
+                    <div class="header-left">
+                        <h1>Conversations</h1>
+                        <p>Review and analyze past conversations with your visitors</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="filter-container">
+                            <div class="filter-group">
+                                <label>Chatbot:</label>
+                                <select id="chatbot-filter">
+                                    <option value="all">All Chatbots</option>
+                                    <option value="sales-assistant">Sales Assistant</option>
+                                    <option value="support-bot">Support Bot</option>
+                                    <option value="lead-gen">Lead Generator</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Date Range:</label>
+                                <select id="date-range-filter">
+                                    <option value="7d">Last 7 days</option>
+                                    <option value="30d">Last 30 days</option>
+                                    <option value="90d">Last 90 days</option>
+                                    <option value="custom">Custom range</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Status:</label>
+                                <select id="status-filter">
+                                    <option value="all">All Status</option>
+                                    <option value="lead">Lead Generated</option>
+                                    <option value="answered">Question Answered</option>
+                                    <option value="handoff">Human Handoff</option>
+                                    <option value="abandoned">Abandoned</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn-primary" id="export-conversations">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Conversations List -->
+                <div class="conversations-container">
+                    <div class="conversation-list">
+                        <div class="conversation-item active" data-id="conv1">
+                            <div class="conversation-info">
+                                <div class="user-info">
+                                    <div class="avatar">
+                                        <span>MC</span>
+                                    </div>
+                                    <div class="details">
+                                        <h4>Michael Cooper</h4>
+                                        <div class="source">
+                                            <i class="fas fa-globe"></i> Website
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="conversation-meta">
+                                    <div class="timestamp">Today, 2:15 PM</div>
+                                    <div class="status lead">Lead</div>
+                                </div>
+                            </div>
+                            <div class="conversation-preview">
+                                <p>I'm interested in your Enterprise plan. Can you tell me more about the pricing?</p>
+                            </div>
+                            <div class="conversation-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-comment"></i> 8 messages
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-clock"></i> 4m 12s
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conversation-item" data-id="conv2">
+                            <div class="conversation-info">
+                                <div class="user-info">
+                                    <div class="avatar">
+                                        <span>SJ</span>
+                                    </div>
+                                    <div class="details">
+                                        <h4>Sarah Johnson</h4>
+                                        <div class="source">
+                                            <i class="fab fa-facebook"></i> Facebook
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="conversation-meta">
+                                    <div class="timestamp">Today, 11:30 AM</div>
+                                    <div class="status answered">Answered</div>
+                                </div>
+                            </div>
+                            <div class="conversation-preview">
+                                <p>How do I integrate your chatbot with my WordPress site?</p>
+                            </div>
+                            <div class="conversation-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-comment"></i> 5 messages
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-clock"></i> 2m 45s
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conversation-item" data-id="conv3">
+                            <div class="conversation-info">
+                                <div class="user-info">
+                                    <div class="avatar">
+                                        <span>DP</span>
+                                    </div>
+                                    <div class="details">
+                                        <h4>David Peterson</h4>
+                                        <div class="source">
+                                            <i class="fas fa-globe"></i> Website
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="conversation-meta">
+                                    <div class="timestamp">Yesterday, 3:45 PM</div>
+                                    <div class="status handoff">Handoff</div>
+                                </div>
+                            </div>
+                            <div class="conversation-preview">
+                                <p>I'm having issues with my account. I can't access my chatbot settings.</p>
+                            </div>
+                            <div class="conversation-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-comment"></i> 12 messages
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-clock"></i> 7m 18s
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conversation-item" data-id="conv4">
+                            <div class="conversation-info">
+                                <div class="user-info">
+                                    <div class="avatar">
+                                        <span>JL</span>
+                                    </div>
+                                    <div class="details">
+                                        <h4>Jennifer Lewis</h4>
+                                        <div class="source">
+                                            <i class="fas fa-globe"></i> Website
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="conversation-meta">
+                                    <div class="timestamp">Yesterday, 10:12 AM</div>
+                                    <div class="status abandoned">Abandoned</div>
+                                </div>
+                            </div>
+                            <div class="conversation-preview">
+                                <p>Do you offer a free trial?</p>
+                            </div>
+                            <div class="conversation-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-comment"></i> 2 messages
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-clock"></i> 0m 42s
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conversation-item" data-id="conv5">
+                            <div class="conversation-info">
+                                <div class="user-info">
+                                    <div class="avatar">
+                                        <span>RB</span>
+                                    </div>
+                                    <div class="details">
+                                        <h4>Robert Brown</h4>
+                                        <div class="source">
+                                            <i class="fab fa-linkedin"></i> LinkedIn
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="conversation-meta">
+                                    <div class="timestamp">May 15, 2023</div>
+                                    <div class="status lead">Lead</div>
+                                </div>
+                            </div>
+                            <div class="conversation-preview">
+                                <p>Can your chatbot handle multiple languages? We need support for Spanish and French.</p>
+                            </div>
+                            <div class="conversation-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-comment"></i> 10 messages
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-clock"></i> 5m 27s
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conversation Detail View -->
+                    <div class="conversation-detail">
+                        <div class="detail-header">
+                            <div class="user-profile">
+                                <div class="avatar">
+                                    <span>MC</span>
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Michael Cooper</h3>
+                                    <p>
+                                        <i class="fas fa-map-marker-alt"></i> San Francisco, CA
+                                        <span class="separator">•</span>
+                                        <i class="fas fa-globe"></i> Website
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="detail-actions">
+                                <button class="btn-secondary">
+                                    <i class="fas fa-envelope"></i> Contact
+                                </button>
+                                <button class="btn-secondary">
+                                    <i class="fas fa-user-plus"></i> Add to CRM
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn-icon">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a href="#"><i class="fas fa-trash"></i> Delete Conversation</a>
+                                        <a href="#"><i class="fas fa-tag"></i> Add Tag</a>
+                                        <a href="#"><i class="fas fa-flag"></i> Report Issue</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conversation-info-panel">
+                            <div class="panel-item">
+                                <span class="label">Email</span>
+                                <span class="value">michael.cooper@example.com</span>
+                            </div>
+                            <div class="panel-item">
+                                <span class="label">Phone</span>
+                                <span class="value">+1 (555) 123-4567</span>
+                            </div>
+                            <div class="panel-item">
+                                <span class="label">Started</span>
+                                <span class="value">May 18, 2023 - 2:15 PM</span>
+                            </div>
+                            <div class="panel-item">
+                                <span class="label">Duration</span>
+                                <span class="value">4m 12s</span>
+                            </div>
+                            <div class="panel-item">
+                                <span class="label">Device</span>
+                                <span class="value"><i class="fas fa-desktop"></i> Desktop - Chrome</span>
+                            </div>
+                            <div class="panel-item">
+                                <span class="label">Status</span>
+                                <span class="value status-tag lead">Lead Generated</span>
+                            </div>
+                        </div>
+
+                        <div class="conversation-messages">
+                            <div class="timestamp-divider">
+                                <span>May 18, 2023</span>
+                            </div>
+                            
+                            <div class="message-item bot">
+                                <div class="message-avatar">
+                                    <img src="../website/images/robot-avatar.svg" alt="Chatbot">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Sales Assistant</span>
+                                        <span class="message-time">2:15 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>👋 Hello! Welcome to ManyChatBot. How can I help you today?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message-item user">
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Michael Cooper</span>
+                                        <span class="message-time">2:16 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>I'm interested in your Enterprise plan. Can you tell me more about the pricing?</p>
+                                    </div>
+                                </div>
+                                <div class="message-avatar">
+                                    <div class="avatar"><span>MC</span></div>
+                                </div>
+                            </div>
+
+                            <div class="message-item bot">
+                                <div class="message-avatar">
+                                    <img src="../website/images/robot-avatar.svg" alt="Chatbot">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Sales Assistant</span>
+                                        <span class="message-time">2:16 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>Our Enterprise plan is tailored for large businesses with custom needs. The pricing starts at $499/month but varies based on your specific requirements and the number of chatbots you need.</p>
+                                        <p>Would you like me to arrange a call with our sales team to discuss a custom quote?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message-item user">
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Michael Cooper</span>
+                                        <span class="message-time">2:17 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>Yes, that would be great. What information do you need from me?</p>
+                                    </div>
+                                </div>
+                                <div class="message-avatar">
+                                    <div class="avatar"><span>MC</span></div>
+                                </div>
+                            </div>
+
+                            <div class="message-item bot">
+                                <div class="message-avatar">
+                                    <img src="../website/images/robot-avatar.svg" alt="Chatbot">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Sales Assistant</span>
+                                        <span class="message-time">2:17 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>Great! To arrange a call, I'll need a few details:</p>
+                                        <ol>
+                                            <li>Your full name</li>
+                                            <li>Your email address</li>
+                                            <li>Your phone number</li>
+                                            <li>Your company name</li>
+                                            <li>Preferred contact time</li>
+                                        </ol>
+                                        <p>Could you please provide these details?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message-item user">
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Michael Cooper</span>
+                                        <span class="message-time">2:18 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>Sure. My name is Michael Cooper, email is michael.cooper@example.com, phone is +1 (555) 123-4567, and I work at Cooper Technologies. I'm available tomorrow afternoon or Friday morning.</p>
+                                    </div>
+                                </div>
+                                <div class="message-avatar">
+                                    <div class="avatar"><span>MC</span></div>
+                                </div>
+                            </div>
+
+                            <div class="message-item bot">
+                                <div class="message-avatar">
+                                    <img src="../website/images/robot-avatar.svg" alt="Chatbot">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Sales Assistant</span>
+                                        <span class="message-time">2:19 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>Thank you, Michael! I've recorded your information and our sales team will contact you to schedule a call. They'll reach out within the next 24 hours to arrange a time that works for you.</p>
+                                        <p>Is there anything specific you'd like to discuss during the call, or any other questions I can help with right now?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message-item user">
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Michael Cooper</span>
+                                        <span class="message-time">2:19 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>I'd like to know more about your API integration options and multi-language support. We operate in several countries.</p>
+                                    </div>
+                                </div>
+                                <div class="message-avatar">
+                                    <div class="avatar"><span>MC</span></div>
+                                </div>
+                            </div>
+
+                            <div class="message-item bot">
+                                <div class="message-avatar">
+                                    <img src="../website/images/robot-avatar.svg" alt="Chatbot">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-sender">Sales Assistant</span>
+                                        <span class="message-time">2:20 PM</span>
+                                    </div>
+                                    <div class="message-bubble">
+                                        <p>I'll make a note of your interest in API integration and multi-language support. Our Enterprise plan includes our full API suite and supports 20+ languages out of the box.</p>
+                                        <p>I've added these points to your inquiry. Our sales team will be prepared to discuss these aspects in detail during your call.</p>
+                                        <p>Thank you for your interest in ManyChatBot!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conversation-actions">
+                            <div class="action-tabs">
+                                <button class="tab active" data-tab="notes">
+                                    <i class="fas fa-sticky-note"></i> Notes
+                                </button>
+                                <button class="tab" data-tab="tags">
+                                    <i class="fas fa-tags"></i> Tags
+                                </button>
+                                <button class="tab" data-tab="activities">
+                                    <i class="fas fa-history"></i> Activities
+                                </button>
+                            </div>
+                            
+                            <div class="tab-content active" id="notes-tab">
+                                <div class="notes-container">
+                                    <div class="note-item">
+                                        <div class="note-header">
+                                            <span class="note-author">John Smith</span>
+                                            <span class="note-date">May 18, 2023 - 3:30 PM</span>
+                                        </div>
+                                        <div class="note-content">
+                                            <p>Called the client to follow up. They're interested in a demo next week. Scheduled for Wednesday at 10 AM.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-note">
+                                    <textarea placeholder="Add a note..."></textarea>
+                                    <button class="btn-primary">Save Note</button>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content" id="tags-tab">
+                                <div class="tags-container">
+                                    <div class="current-tags">
+                                        <span class="tag">Enterprise</span>
+                                        <span class="tag">High Priority</span>
+                                        <span class="tag">API Integration</span>
+                                    </div>
+                                    <div class="add-tag">
+                                        <input type="text" placeholder="Add a tag...">
+                                        <button class="btn-primary">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content" id="activities-tab">
+                                <div class="activities-container">
+                                    <div class="activity-item">
+                                        <i class="fas fa-user-plus"></i>
+                                        <div class="activity-details">
+                                            <span class="activity-text">Added to CRM as a lead</span>
+                                            <span class="activity-date">May 18, 2023 - 2:30 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <div class="activity-details">
+                                            <span class="activity-text">Email confirmation sent</span>
+                                            <span class="activity-date">May 18, 2023 - 2:25 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-comments"></i>
+                                        <div class="activity-details">
+                                            <span class="activity-text">Conversation started</span>
+                                            <span class="activity-date">May 18, 2023 - 2:15 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/conversations.js"></script>
+</body>
+</html>

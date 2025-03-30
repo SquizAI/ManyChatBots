@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManyChatBot - Stop Losing Leads While You Sleep</title>
+    <meta name="description" content="ManyChatBot helps businesses automate customer interactions with powerful chatbots that increase efficiency, engagement, and sales.">
+    <!-- Performance optimizations -->
+    <link rel="preload" href="images/logo.svg" as="image">
+    <link rel="preload" href="images/hero-chatbot.svg" as="image">
+    <link rel="preload" href="fonts/poppins-v20-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+    <meta name="theme-color" content="#0071e3">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Critical CSS inlined for fast rendering -->
+    <style>
+        /* Loader styles */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #0071e3;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loader-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+    <link rel="stylesheet" href="css/critical.css">
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/animations.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/chat-widget.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/speech-to-text.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="css/chat-widget.css">
+        <link rel="stylesheet" href="css/speech-to-text.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    </noscript>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <span class="loader"></span>
+    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="ManyChatBot Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta">
+                    <a href="#book-consultation" class="btn btn-primary">Book Free Consultation</a>
+                    <a href="/dashboard/login.html" class="btn btn-outline ml-2">Client Login</a>
+                    <a href="/admin/login.html" class="btn btn-text"><i class="fas fa-lock"></i> Admin</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline animate-on-scroll fade-in">Stop Losing Leads <span class="text-highlight">While You Sleep</span></h1>
+                <p class="hero-subtitle animate-on-scroll fade-in delay-300">Our AI chatbots respond instantly to customer inquiries 24/7, increasing conversions by up to 40% without hiring a full-time team.</p>
+                <div class="hero-cta animate-on-scroll fade-in delay-500">
+                    <a href="#book-consultation" class="btn btn-primary btn-large">Book Free 15-Min Consultation</a>
+                    <a href="#packages" class="btn btn-secondary btn-large">View Packages</a>
+                </div>
+                <div class="social-proof">
+                    <p>Trusted by 100+ businesses across 12 industries</p>
+                    <div class="client-logos">
+                        <!-- Client logos will be added here -->
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-chatbot.svg" alt="ManyChatBot in action">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem-Solution Section -->
+    <section class="problem-solution" id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Problem With Manual Customer Service</h2>
+                <p>Businesses lose up to 55% of potential leads when they can't respond within 5 minutes</p>
+            </div>
+            
+            <div class="comparison-table animate-on-scroll fade-in">
+                <div class="comparison-column problem">
+                    <h3>Before ManyChatBot</h3>
+                    <ul class="comparison-list">
+                        <li><i class="fas fa-times"></i> Manual responses to every inquiry</li>
+                        <li><i class="fas fa-times"></i> Missed opportunities while offline</li>
+                        <li><i class="fas fa-times"></i> Inconsistent engagement</li>
+                        <li><i class="fas fa-times"></i> Lower conversion rates</li>
+                        <li><i class="fas fa-times"></i> Hours spent managing messages</li>
+                        <li><i class="fas fa-times"></i> Limited by human capacity</li>
+                    </ul>
+                </div>
+                <div class="comparison-column solution">
+                    <h3>After ManyChatBot</h3>
+                    <ul class="comparison-list">
+                        <li><i class="fas fa-check"></i> Automated, intelligent interactions</li>
+                        <li><i class="fas fa-check"></i> 24/7 customer engagement</li>
+                        <li><i class="fas fa-check"></i> Consistent brand voice</li>
+                        <li><i class="fas fa-check"></i> Higher conversion rates</li>
+                        <li><i class="fas fa-check"></i> Focus on business growth</li>
+                        <li><i class="fas fa-check"></i> Unlimited scaling potential</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="key-benefits visible">
+                <h3>Key Benefits</h3>
+                <div class="benefits-grid visible">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h4>Cost Efficiency</h4>
+                        <p>One-time fee vs. $31,200/year for a full-time VA</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>24/7 Availability</h4>
+                        <p>Never miss a lead while you sleep</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>Consistency</h4>
+                        <p>Perfect brand voice in every interaction</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </div>
+                        <h4>Scalability</h4>
+                        <p>Handle unlimited conversations simultaneously</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Perfect Chatbot Solution</h2>
+                <p>All packages include our 60-day money-back guarantee and 30-day performance review</p>
+            </div>
+            
+            <div class="packages-grid visible">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Basic Package</h3>
+                        <div class="package-price">
+                            <span class="price">$700</span>
+                            <span class="price-note">one-time fee</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> One custom chatbot</li>
+                            <li><i class="fas fa-check"></i> Trained on your persona</li>
+                            <li><i class="fas fa-check"></i> Follows your sales method</li>
+                            <li><i class="fas fa-check"></i> Multiple objectives</li>
+                            <li><i class="fas fa-check"></i> 60-day guarantee</li>
+                        </ul>
+                    </div>
+                    <div class="package-note">
+                        <p><em>Down-sell only</em></p>
+                    </div>
+                    <div class="package-cta">
+                        <a href="#book-consultation" class="btn btn-secondary">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="package-card featured">
+                    <div class="featured-label">Most Popular</div>
+                    <div class="package-header">
+                        <h3>Pro Package</h3>
+                        <div class="package-price">
+                            <span class="price">$2,600</span>
+                            <span class="price-note">one-time fee</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Up to 5 custom chatbots</li>
+                            <li><i class="fas fa-check"></i> Enhanced data collection</li>
+                            <li><i class="fas fa-check"></i> Advanced multi-step flow</li>
+                            <li><i class="fas fa-check"></i> Follow-up sequences</li>
+                            <li><i class="fas fa-check"></i> 60-day guarantee</li>
+                        </ul>
+                    </div>
+                    <div class="package-note">
+                        <p><em>Recommended option</em></p>
+                    </div>
+                    <div class="package-cta">
+                        <a href="#book-consultation" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Ultra Package</h3>
+                        <div class="package-price">
+                            <span class="price">Custom</span>
+                            <span class="price-note">contact for pricing</span>
+                        </div>
+                    </div>
+                    <div class="package-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> On-call service</li>
+                            <li><i class="fas fa-check"></i> Website integration</li>
+                            <li><i class="fas fa-check"></i> Continuous improvement</li>
+                            <li><i class="fas fa-check"></i> User behavior A/B testing</li>
+                            <li><i class="fas fa-check"></i> 60-day guarantee</li>
+                        </ul>
+                    </div>
+                    <div class="package-note">
+                        <p><em>Fully managed</em></p>
+                    </div>
+                    <div class="package-cta">
+                        <a href="#book-consultation" class="btn btn-secondary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Proven Implementation Process</h2>
+                <p>From consultation to launch in as little as 5 business days</p>
+            </div>
+            
+            <div class="process-timeline visible">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Initial Consultation</h3>
+                        <p>15-minute call to understand your business needs and goals</p>
+                        <ul class="step-details">
+                            <li>Qualify lead and understand needs</li>
+                            <li>Demonstrate value and ROI</li>
+                            <li>Set next steps</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Proposal & Terms</h3>
+                        <p>Detailed solution tailored to your specific requirements</p>
+                        <ul class="step-details">
+                            <li>Send detailed proposal</li>
+                            <li>Outline deliverables and timeline</li>
+                            <li>Confirm pricing and payments</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Onboarding</h3>
+                        <p>Gather all necessary information to build your solution</p>
+                        <ul class="step-details">
+                            <li>Collect brand information</li>
+                            <li>Set up accounts and access</li>
+                            <li>Create Notion client portal</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Implementation</h3>
+                        <p>Build and test your custom chatbot solution</p>
+                        <ul class="step-details">
+                            <li>Build custom chatbot flows</li>
+                            <li>Set up integrations</li>
+                            <li>Test across platforms</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Launch & Review</h3>
+                        <p>Go live and ensure optimal performance</p>
+                        <ul class="step-details">
+                            <li>Deploy to live environment</li>
+                            <li>2-week check-in</li>
+                            <li>30-day performance review</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our chatbot solutions</p>
+            </div>
+            
+            <div class="accordion visible">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How long does it take to implement a chatbot?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Typically, our implementation timeline is 2-5 business days from onboarding to launch. The exact timeframe depends on the complexity of your requirements and how quickly we receive your brand information and access to necessary platforms.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Do I need technical knowledge to use the chatbot?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Not at all! We handle all the technical aspects, from setup to deployment. Once your chatbot is live, we provide a simple interface for monitoring performance and making basic adjustments. For more complex changes, our team is just a message away.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How does the 60-day guarantee work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We're confident in our solutions, so we offer a 60-day money-back guarantee. If you're not satisfied with your chatbot's performance within the first 60 days, we'll refund your investment in full. Our 30-day performance review ensures we address any concerns early on.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Can the chatbot integrate with my existing systems?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Yes! Our chatbots integrate with most popular business tools including CRMs, email marketing platforms, calendar systems, and payment processors. We use Make.com for seamless integrations, allowing your chatbot to work harmoniously with your existing workflow.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How does pricing work? Are there monthly fees?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We charge a one-time implementation fee based on your selected package. There are no monthly fees for our service. You will need to maintain subscriptions to the underlying platforms (ManyChat, Make.com, etc.), which typically range from $10-$100/month depending on your needs and usage volume.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How can I calculate the ROI for my business?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We've created a simple <a href="chatbot-roi-calculator.html">ROI Calculator</a> that helps you estimate the potential return on investment based on your specific business metrics. Input your website traffic, conversion rates, and average customer value to see how ManyChatBot could impact your bottom line.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>See how our clients are transforming their businesses with ManyChatBot</p>
+            </div>
+            
+            <div class="testimonial-slider visible">
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p>Since implementing ManyChatBot, our lead conversion rate has increased by 42%. The chatbot engages visitors instantly, captures their information, and books consultations while we're sleeping. It's like having a 24/7 sales team that never takes a break.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/testimonial-1.svg" alt="Sarah Johnson">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Marketing Director, Wellness Clinic</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-results">
+                            <div class="result-item">
+                                <span class="result-value">42%</span>
+                                <span class="result-label">Increase in Leads</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-value">28</span>
+                                <span class="result-label">Hours Saved Weekly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- More testimonial slides would be added here -->
+            </div>
+            
+            <div class="testimonial-nav">
+                <button class="prev-testimonial"><i class="fas fa-arrow-left"></i></button>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="next-testimonial"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Booking Section -->
+    <section class="book-consultation" id="book-consultation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Book Your Free 15-Minute Consultation</h2>
+                <p>Discover how ManyChatBot can revolutionize your customer interactions</p>
+            </div>
+            
+            <div class="consultation-content visible">
+                <div class="consultation-info">
+                    <h3>What to Expect</h3>
+                    <ul class="consultation-details">
+                        <li><i class="fas fa-check-circle"></i> No-obligation discovery call</li>
+                        <li><i class="fas fa-check-circle"></i> Tailored solution recommendations</li>
+                        <li><i class="fas fa-check-circle"></i> ROI assessment for your business</li>
+                        <li><i class="fas fa-check-circle"></i> Quick implementation timeline</li>
+                        <li><i class="fas fa-check-circle"></i> Transparent pricing discussion</li>
+                    </ul>
+                    <div class="guarantee-badge">
+                        <img src="images/guarantee-badge.svg" alt="60-Day Money-Back Guarantee">
+                        <p>60-Day Money-Back Guarantee</p>
+                    </div>
+                </div>
+                
+                <div class="consultation-form">
+                    <form id="booking-form" action="https://app.manybot.io/webhook" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business">Business Name</label>
+                            <input type="text" id="business" name="business" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website (if any)</label>
+                            <input type="url" id="website" name="website">
+                        </div>
+                        <div class="form-group">
+                            <label for="package">Interested Package</label>
+                            <select id="package" name="package">
+                                <option value="Not Sure">Not Sure Yet</option>
+                                <option value="Basic">Basic Package ($700)</option>
+                                <option value="Pro">Pro Package ($2,600)</option>
+                                <option value="Ultra">Ultra Package (Custom)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="bot_id" value="YOUR_MANYBOT_ID">
+                            <input type="hidden" name="flow_id" value="YOUR_FLOW_ID">
+                            <input type="hidden" name="source" value="website">
+                            <button type="submit" class="btn btn-primary btn-full pulse">Book Consultation Now</button>
+                        </div>
+                        <p class="form-disclaimer">By submitting this form, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a> and consent to be contacted about our services.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/logo-white.svg" alt="ManyChatBot Logo">
+                    </div>
+                    <p class="footer-tagline">Stop losing leads while you sleep</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/manychatbots/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@manychatbots/" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/manychatbot/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/manychatbot" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#testimonials">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="chatbot-roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="#faq">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:hello@manychatbots.com">hello@manychatbots.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+18005556789">1-800-555-6789</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Miami, FL</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ManyChatBot. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/speech-to-text.js"></script>
+    <script src="js/chat-widget.js"></script>
+    <!-- Performance Optimization Scripts -->
+    <script>
+        // Hide loader when page is loaded
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.page-loader');
+            loader.classList.add('loader-hidden');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 300);
+            
+            // Lazy load images
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                // Fallback for browsers without intersection observer
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                });
+            }
+            
+            // Initialize intersection observer for animations
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            if ('IntersectionObserver' in window) {
+                const animationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animated');
+                            animationObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                animateElements.forEach(el => animationObserver.observe(el));
+            } else {
+                // Fallback for browsers without intersection observer
+                animateElements.forEach(el => el.classList.add('animated'));
+            }
+        });
+        
+        // Handle mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const headerCta = document.querySelector('.header-cta');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    mainNav.classList.toggle('active');
+                    headerCta.classList.toggle('active');
+                });
+            }
+            
+            // Handle smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close mobile menu if open
+                            if (mobileMenuToggle && mobileMenuToggle.classList.contains('active')) {
+                                mobileMenuToggle.click();
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- ManyChat Integration Script -->
+    <script>
+        // Integration helper for ManyChatBot
+        window.ManyChat = {
+            init: function(options) {
+                console.log('ManyChatBot integration initialized');
+                // This will be connected to the backend ManyChatBot system
+                // when deployed to production
+            },
+            // Track events for analytics
+            trackEvent: function(eventName, properties) {
+                if (typeof eventName !== 'string') return;
+                
+                console.log('ManyChatBot event tracked:', eventName, properties);
+                // In production, this sends data to our unified agent architecture
+            },
+            // Trigger a chatbot flow
+            triggerFlow: function(flowId) {
+                console.log('ManyChatBot flow triggered:', flowId);
+                // This connects with the ManyChat integration from blueprint
+            }
+        };
+        
+        // Initialize when page loads
+        window.addEventListener('load', function() {
+            window.ManyChat.init({
+                websiteId: 'manychatbot-website-v1',
+                enableTracking: true
+            });
+        });
+    </script>
+</body>
+</html>

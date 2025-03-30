@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <style>
+    .badge-bg { fill: #ffc107; }
+    .badge-inner { fill: #fff; }
+    .badge-text { font-family: 'Arial', sans-serif; font-weight: bold; fill: #212529; text-anchor: middle; }
+    .badge-subtext { font-family: 'Arial', sans-serif; font-size: 10px; fill: #212529; text-anchor: middle; }
+    .badge-check { fill: #28a745; }
+  </style>
+  <g>
+    <!-- Outer Circle -->
+    <circle cx="60" cy="60" r="58" stroke="#e0a800" stroke-width="4" class="badge-bg" />
+    
+    <!-- Inner Circle -->
+    <circle cx="60" cy="60" r="48" class="badge-inner" />
+    
+    <!-- Text -->
+    <text x="60" y="45" class="badge-text" font-size="14">60-DAY</text>
+    <text x="60" y="65" class="badge-text" font-size="16">MONEY-BACK</text>
+    <text x="60" y="85" class="badge-text" font-size="16">GUARANTEE</text>
+    
+    <!-- Check Mark -->
+    <path class="badge-check" d="M45,60 l10,10 l20,-20" stroke="#28a745" stroke-width="4" fill="none" />
+    
+    <!-- Star Bursts -->
+    <polygon points="60,0 63,10 57,10" class="badge-bg" />
+    <polygon points="60,120 63,110 57,110" class="badge-bg" />
+    <polygon points="0,60 10,63 10,57" class="badge-bg" />
+    <polygon points="120,60 110,63 110,57" class="badge-bg" />
+    <polygon points="17,17 25,25 22,28 14,20" class="badge-bg" />
+    <polygon points="103,17 95,25 98,28 106,20" class="badge-bg" />
+    <polygon points="17,103 25,95 22,92 14,100" class="badge-bg" />
+    <polygon points="103,103 95,95 98,92 106,100" class="badge-bg" />
+  </g>
+</svg>

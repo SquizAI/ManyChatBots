@@ -23,7 +23,9 @@ const adminRoutes = require('./routes/admin');
 const webChatRoutes = require('./routes/webChat.routes');
 const webhookRoutes = require('./routes/webhook.routes');
 const aiRoutes = require('./routes/ai.routes');
-const speechRoutes = require('./routes/speech.routes');
+// Temporarily disabled for testing Notion integration
+// const speechRoutes = require('./routes/speech.routes');
+const notionRoutes = require('./routes/notion.routes');
 
 const app = express();
 
@@ -59,7 +61,9 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/chat', webChatRoutes);
 app.use('/api/webhooks', webhookRoutes);
 app.use('/api/ai', aiRoutes);
-app.use('/api/speech', speechRoutes);
+// Temporarily disabled for testing Notion integration
+// app.use('/api/speech', speechRoutes);
+app.use('/api/notion', notionRoutes);
 
 // Serve React front-end in production
 app.get('/admin*', (req, res) => {

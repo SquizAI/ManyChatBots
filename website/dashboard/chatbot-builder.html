@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Builder - ManyChatBot Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/chatbot-builder.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../website/images/logo.svg" alt="ManyChatBot Logo" class="logo">
+                <span class="close-sidebar"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <span>JS</span>
+                </div>
+                <div class="user-info">
+                    <h4>John Smith</h4>
+                    <p>Professional Plan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <a href="chatbot-builder.html"><i class="fas fa-robot"></i> My Chatbots</a>
+                    </li>
+                    <li>
+                        <a href="conversations.html"><i class="fas fa-comments"></i> Conversations</a>
+                    </li>
+                    <li>
+                        <a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                    <li>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                    <li>
+                        <a href="billing.html"><i class="fas fa-credit-card"></i> Billing</a>
+                    </li>
+                    <li>
+                        <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="builder-header">
+                    <h1 id="builder-title">Create New Chatbot</h1>
+                    <div class="breadcrumb">
+                        <a href="index.html">Dashboard</a>
+                        <span>/</span>
+                        <a href="index.html#chatbots">My Chatbots</a>
+                        <span>/</span>
+                        <span>Create New Chatbot</span>
+                    </div>
+                </div>
+
+                <div class="builder-container">
+                    <div class="builder-sidebar">
+                        <div class="builder-steps">
+                            <div class="step active" data-step="basics">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Basic Info</h3>
+                                    <p>Name, description & appearance</p>
+                                </div>
+                            </div>
+                            <div class="step" data-step="welcome">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Welcome Messages</h3>
+                                    <p>Greetings & initial interactions</p>
+                                </div>
+                            </div>
+                            <div class="step" data-step="knowledge">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Knowledge Base</h3>
+                                    <p>Train your chatbot</p>
+                                </div>
+                            </div>
+                            <div class="step" data-step="behavior">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3>Behavior & Skills</h3>
+                                    <p>Personality & capabilities</p>
+                                </div>
+                            </div>
+                            <div class="step" data-step="settings">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h3>Settings</h3>
+                                    <p>Advanced configuration</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="builder-content">
+                        <!-- Basic Info Step -->
+                        <div class="builder-step-content active" id="basics-content">
+                            <div class="form-group">
+                                <label for="chatbot-name">Chatbot Name <span class="required">*</span></label>
+                                <input type="text" id="chatbot-name" class="form-control" placeholder="e.g., Sales Assistant">
+                                <small>This will be visible to your users</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="chatbot-description">Description</label>
+                                <textarea id="chatbot-description" class="form-control" rows="3" placeholder="What is this chatbot's purpose?"></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Avatar</label>
+                                        <div class="avatar-picker">
+                                            <div class="avatar-preview">
+                                                <div class="avatar">
+                                                    <img src="https://via.placeholder.com/100" alt="Chatbot Avatar" id="avatar-image">
+                                                </div>
+                                            </div>
+                                            <div class="avatar-options">
+                                                <button class="upload-avatar-btn"><i class="fas fa-upload"></i> Upload Image</button>
+                                                <input type="file" id="avatar-upload" hidden>
+                                                <div class="avatar-colors">
+                                                    <span class="color-option" style="background-color: #0071e3;" data-color="#0071e3"></span>
+                                                    <span class="color-option" style="background-color: #28a745;" data-color="#28a745"></span>
+                                                    <span class="color-option" style="background-color: #6f42c1;" data-color="#6f42c1"></span>
+                                                    <span class="color-option" style="background-color: #fd7e14;" data-color="#fd7e14"></span>
+                                                    <span class="color-option" style="background-color: #dc3545;" data-color="#dc3545"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Theme Color</label>
+                                        <div class="color-picker">
+                                            <div class="color-preview" style="background-color: #0071e3;"></div>
+                                            <input type="text" id="theme-color" class="form-control" value="#0071e3">
+                                            <div class="color-palette">
+                                                <span class="color-option" style="background-color: #0071e3;" data-color="#0071e3"></span>
+                                                <span class="color-option" style="background-color: #28a745;" data-color="#28a745"></span>
+                                                <span class="color-option" style="background-color: #6f42c1;" data-color="#6f42c1"></span>
+                                                <span class="color-option" style="background-color: #fd7e14;" data-color="#fd7e14"></span>
+                                                <span class="color-option" style="background-color: #dc3545;" data-color="#dc3545"></span>
+                                                <span class="color-option" style="background-color: #17a2b8;" data-color="#17a2b8"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Welcome Message Step -->
+                        <div class="builder-step-content" id="welcome-content">
+                            <div class="form-group">
+                                <label for="greeting-message">Greeting Message <span class="required">*</span></label>
+                                <textarea id="greeting-message" class="form-control" rows="3" placeholder="Hello! How can I help you today?"></textarea>
+                                <small>This message will be displayed when a user first interacts with your chatbot</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="follow-up-message">Follow-up Message</label>
+                                <textarea id="follow-up-message" class="form-control" rows="3" placeholder="I can answer questions about our products, services, or provide support."></textarea>
+                                <small>This message will be sent after the greeting message</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Quick Reply Buttons</label>
+                                <div class="quick-replies">
+                                    <div class="quick-reply-item">
+                                        <input type="text" class="form-control" placeholder="Button Text">
+                                        <button class="delete-btn"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <div class="quick-reply-item">
+                                        <input type="text" class="form-control" placeholder="Button Text">
+                                        <button class="delete-btn"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <button class="add-reply-btn"><i class="fas fa-plus"></i> Add Button</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="offline-message">Offline Message</label>
+                                <textarea id="offline-message" class="form-control" rows="3" placeholder="Sorry, I'm currently offline. Please leave a message and we'll get back to you."></textarea>
+                                <small>This message will be shown when the chatbot is offline</small>
+                            </div>
+                        </div>
+
+                        <!-- Knowledge Base Step -->
+                        <div class="builder-step-content" id="knowledge-content">
+                            <div class="form-group">
+                                <label>Training Method</label>
+                                <div class="training-method-selector">
+                                    <div class="training-method active" data-method="faq">
+                                        <i class="fas fa-question-circle"></i>
+                                        <h4>FAQ</h4>
+                                        <p>Train with question & answer pairs</p>
+                                    </div>
+                                    <div class="training-method" data-method="documents">
+                                        <i class="fas fa-file-alt"></i>
+                                        <h4>Documents</h4>
+                                        <p>Upload documents to train your chatbot</p>
+                                    </div>
+                                    <div class="training-method" data-method="website">
+                                        <i class="fas fa-globe"></i>
+                                        <h4>Website</h4>
+                                        <p>Train by crawling your website</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="training-content active" id="faq-training">
+                                <div class="faq-items">
+                                    <div class="faq-item">
+                                        <div class="faq-header">
+                                            <h4>Question & Answer Pair #1</h4>
+                                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                        <div class="faq-body">
+                                            <div class="form-group">
+                                                <label>Question</label>
+                                                <input type="text" class="form-control" placeholder="What are your business hours?">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Answer</label>
+                                                <textarea class="form-control" rows="3" placeholder="Our business hours are 9 AM to 5 PM, Monday through Friday."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="add-faq-btn"><i class="fas fa-plus"></i> Add Question & Answer</button>
+                                </div>
+                            </div>
+
+                            <div class="training-content" id="documents-training">
+                                <div class="documents-uploader">
+                                    <div class="upload-zone">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <h3>Drag & Drop Files Here</h3>
+                                        <p>or</p>
+                                        <button class="upload-btn">Browse Files</button>
+                                        <p class="file-types">Supported formats: PDF, DOCX, TXT (Max 10MB)</p>
+                                    </div>
+                                    <div class="uploaded-files">
+                                        <!-- Files will be listed here after upload -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="training-content" id="website-training">
+                                <div class="form-group">
+                                    <label for="website-url">Website URL</label>
+                                    <input type="url" id="website-url" class="form-control" placeholder="https://www.example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Crawling Depth</label>
+                                    <div class="slider-container">
+                                        <input type="range" min="1" max="5" value="2" class="slider" id="depth-slider">
+                                        <div class="slider-value">2</div>
+                                    </div>
+                                    <small>Higher depth means more pages will be crawled but takes longer</small>
+                                </div>
+                                <button class="start-crawl-btn">Start Crawling</button>
+                            </div>
+                        </div>
+
+                        <!-- Behavior & Skills Step -->
+                        <div class="builder-step-content" id="behavior-content">
+                            <div class="form-group">
+                                <label>Personality Type</label>
+                                <div class="personality-selector">
+                                    <div class="personality-option active" data-personality="professional">
+                                        <i class="fas fa-user-tie"></i>
+                                        <h4>Professional</h4>
+                                        <p>Formal, precise and business-like</p>
+                                    </div>
+                                    <div class="personality-option" data-personality="friendly">
+                                        <i class="fas fa-smile"></i>
+                                        <h4>Friendly</h4>
+                                        <p>Warm, approachable and conversational</p>
+                                    </div>
+                                    <div class="personality-option" data-personality="witty">
+                                        <i class="fas fa-laugh"></i>
+                                        <h4>Witty</h4>
+                                        <p>Humorous, clever and engaging</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Skills & Capabilities</label>
+                                <div class="skills-grid">
+                                    <div class="skill-card">
+                                        <div class="skill-header">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <h4>Appointment Booking</h4>
+                                            <div class="toggle-switch">
+                                                <input type="checkbox" id="appointment-toggle" class="toggle-input">
+                                                <label for="appointment-toggle" class="toggle-label"></label>
+                                            </div>
+                                        </div>
+                                        <p>Allow users to schedule appointments or consultations</p>
+                                    </div>
+                                    <div class="skill-card">
+                                        <div class="skill-header">
+                                            <i class="fas fa-envelope"></i>
+                                            <h4>Lead Capture</h4>
+                                            <div class="toggle-switch">
+                                                <input type="checkbox" id="lead-toggle" class="toggle-input" checked>
+                                                <label for="lead-toggle" class="toggle-label"></label>
+                                            </div>
+                                        </div>
+                                        <p>Collect contact information from potential customers</p>
+                                    </div>
+                                    <div class="skill-card">
+                                        <div class="skill-header">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <h4>Product Recommendations</h4>
+                                            <div class="toggle-switch">
+                                                <input type="checkbox" id="product-toggle" class="toggle-input">
+                                                <label for="product-toggle" class="toggle-label"></label>
+                                            </div>
+                                        </div>
+                                        <p>Suggest products based on user preferences</p>
+                                    </div>
+                                    <div class="skill-card">
+                                        <div class="skill-header">
+                                            <i class="fas fa-headset"></i>
+                                            <h4>Human Handoff</h4>
+                                            <div class="toggle-switch">
+                                                <input type="checkbox" id="handoff-toggle" class="toggle-input" checked>
+                                                <label for="handoff-toggle" class="toggle-label"></label>
+                                            </div>
+                                        </div>
+                                        <p>Transfer conversation to a human agent when needed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Settings Step -->
+                        <div class="builder-step-content" id="settings-content">
+                            <div class="settings-group">
+                                <h3>General Settings</h3>
+                                <div class="form-group">
+                                    <label for="business-hours">Business Hours</label>
+                                    <div class="business-hours">
+                                        <div class="day-row">
+                                            <div class="day-name">Monday</div>
+                                            <div class="hours-input">
+                                                <input type="time" value="09:00"> to <input type="time" value="17:00">
+                                            </div>
+                                            <div class="toggle-switch small">
+                                                <input type="checkbox" id="monday-toggle" class="toggle-input" checked>
+                                                <label for="monday-toggle" class="toggle-label"></label>
+                                            </div>
+                                        </div>
+                                        <!-- Other days would be repeated here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Chat Widget Position</label>
+                                    <div class="position-selector">
+                                        <div class="position-option active" data-position="bottom-right">
+                                            <div class="position-icon bottom-right"></div>
+                                            <span>Bottom Right</span>
+                                        </div>
+                                        <div class="position-option" data-position="bottom-left">
+                                            <div class="position-icon bottom-left"></div>
+                                            <span>Bottom Left</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3>Advanced Settings</h3>
+                                <div class="form-group">
+                                    <label for="response-time">Response Time (seconds)</label>
+                                    <input type="number" id="response-time" class="form-control" value="1.5" min="0.5" max="5" step="0.5">
+                                    <small>Delay before chatbot responds to appear more natural</small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="setting-row">
+                                        <div class="setting-label">
+                                            <label>Auto-start Conversation</label>
+                                            <small>Automatically send greeting after page load</small>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="autostart-toggle" class="toggle-input">
+                                            <label for="autostart-toggle" class="toggle-label"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="setting-row">
+                                        <div class="setting-label">
+                                            <label>Remember Conversations</label>
+                                            <small>Save conversation history for returning users</small>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="remember-toggle" class="toggle-input" checked>
+                                            <label for="remember-toggle" class="toggle-label"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3>Integration</h3>
+                                <div class="form-group">
+                                    <label for="website-code">Website Integration Code</label>
+                                    <div class="code-container">
+                                        <pre><code id="integration-code">&lt;script src="https://manychatbot.com/widget/XXXXX"&gt;&lt;/script&gt;</code></pre>
+                                        <button class="copy-btn" data-target="integration-code"><i class="fas fa-copy"></i></button>
+                                    </div>
+                                    <small>Add this code to your website to embed the chatbot</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="builder-footer">
+                    <div class="button-group">
+                        <button class="btn-secondary" id="prev-step" disabled>Previous</button>
+                        <button class="btn-primary" id="next-step">Next: Welcome Messages</button>
+                    </div>
+                    <div class="save-status">
+                        <span class="status-text">All changes saved</span>
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+
+                <!-- Preview Panel -->
+                <div class="preview-panel">
+                    <div class="preview-header">
+                        <h3>Live Preview</h3>
+                        <div class="preview-controls">
+                            <button class="device-toggle active" data-device="mobile"><i class="fas fa-mobile-alt"></i></button>
+                            <button class="device-toggle" data-device="desktop"><i class="fas fa-desktop"></i></button>
+                            <button class="preview-close"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="preview-container mobile">
+                        <div class="chatbot-preview">
+                            <div class="chat-widget">
+                                <div class="chat-header">
+                                    <div class="chat-avatar">
+                                        <span>CB</span>
+                                    </div>
+                                    <div class="chat-info">
+                                        <h4 id="preview-name">My Chatbot</h4>
+                                        <span class="status">Online</span>
+                                    </div>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message bot">
+                                        <div class="message-content" id="preview-greeting">Hello! How can I help you today?</div>
+                                        <div class="message-time">Just now</div>
+                                    </div>
+                                    <div class="quick-replies-container" id="preview-buttons">
+                                        <button class="quick-reply">Products</button>
+                                        <button class="quick-reply">Pricing</button>
+                                        <button class="quick-reply">Support</button>
+                                    </div>
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" placeholder="Type your message...">
+                                    <button><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                            <div class="chat-trigger" id="preview-trigger">
+                                <div class="chat-icon">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/chatbot-builder.js"></script>
+</body>
+</html>

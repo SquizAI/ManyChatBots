@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManyChatBot Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../website/images/logo.svg" alt="ManyChatBot Logo" class="logo">
+                <span class="close-sidebar"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <span>JS</span>
+                </div>
+                <div class="user-info">
+                    <h4>John Smith</h4>
+                    <p>Professional Plan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#chatbots"><i class="fas fa-robot"></i> My Chatbots</a>
+                    </li>
+                    <li>
+                        <a href="#conversations"><i class="fas fa-comments"></i> Conversations</a>
+                    </li>
+                    <li>
+                        <a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                    <li>
+                        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                    <li>
+                        <a href="#billing"><i class="fas fa-credit-card"></i> Billing</a>
+                    </li>
+                    <li>
+                        <a href="#support"><i class="fas fa-headset"></i> Support</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="dashboard-greeting">
+                    <h1>Welcome back, John!</h1>
+                    <p>Here's what's happening with your chatbots today.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stats-card">
+                        <div class="stats-card-icon blue">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stats-card-content">
+                            <h3>2,456</h3>
+                            <p>Total Conversations</p>
+                            <span class="stats-trend positive">
+                                <i class="fas fa-arrow-up"></i> 12.5%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-card-icon green">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stats-card-content">
+                            <h3>187</h3>
+                            <p>Leads Captured</p>
+                            <span class="stats-trend positive">
+                                <i class="fas fa-arrow-up"></i> 8.3%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-card-icon purple">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stats-card-content">
+                            <h3>1.2s</h3>
+                            <p>Avg. Response Time</p>
+                            <span class="stats-trend negative">
+                                <i class="fas fa-arrow-down"></i> 3.1%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-card-icon orange">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stats-card-content">
+                            <h3>4.8/5</h3>
+                            <p>User Satisfaction</p>
+                            <span class="stats-trend positive">
+                                <i class="fas fa-arrow-up"></i> 2.4%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chatbot Performance -->
+                <div class="dashboard-row">
+                    <div class="dashboard-card wide-card">
+                        <div class="card-header">
+                            <h2>Chatbot Performance</h2>
+                            <div class="card-actions">
+                                <select>
+                                    <option>Last 7 days</option>
+                                    <option>Last 30 days</option>
+                                    <option>Last 90 days</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="performance-chart">
+                                <!-- Placeholder for chart -->
+                                <div class="chart-placeholder">
+                                    <img src="https://via.placeholder.com/800x300?text=Conversations+Chart" alt="Performance Chart">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Conversations and Traffic Sources -->
+                <div class="dashboard-row">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Recent Conversations</h2>
+                            <div class="card-actions">
+                                <a href="#all-conversations">View All</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="conversations-list">
+                                <div class="conversation-item">
+                                    <div class="conversation-avatar">
+                                        <span>MK</span>
+                                    </div>
+                                    <div class="conversation-content">
+                                        <div class="conversation-header">
+                                            <h4>Mark Kendall</h4>
+                                            <span class="conversation-time">10:45 AM</span>
+                                        </div>
+                                        <p>I'm interested in the Professional package. Do you offer any discounts for annual subscriptions?</p>
+                                    </div>
+                                </div>
+                                <div class="conversation-item">
+                                    <div class="conversation-avatar">
+                                        <span>SJ</span>
+                                    </div>
+                                    <div class="conversation-content">
+                                        <div class="conversation-header">
+                                            <h4>Sara Jackson</h4>
+                                            <span class="conversation-time">Yesterday</span>
+                                        </div>
+                                        <p>How long does it take to set up a chatbot for my e-commerce store?</p>
+                                    </div>
+                                </div>
+                                <div class="conversation-item">
+                                    <div class="conversation-avatar">
+                                        <span>RD</span>
+                                    </div>
+                                    <div class="conversation-content">
+                                        <div class="conversation-header">
+                                            <h4>Robert Davis</h4>
+                                            <span class="conversation-time">Yesterday</span>
+                                        </div>
+                                        <p>Can you integrate with Shopify and capture order information?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Traffic Sources</h2>
+                            <div class="card-actions">
+                                <a href="#detailed-analytics">Details</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-placeholder">
+                                <img src="https://via.placeholder.com/400x250?text=Traffic+Sources+Chart" alt="Traffic Sources">
+                            </div>
+                            <div class="source-list">
+                                <div class="source-item">
+                                    <div class="source-name">
+                                        <i class="fas fa-globe"></i>
+                                        <span>Direct</span>
+                                    </div>
+                                    <div class="source-stats">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 65%;"></div>
+                                        </div>
+                                        <span>65%</span>
+                                    </div>
+                                </div>
+                                <div class="source-item">
+                                    <div class="source-name">
+                                        <i class="fab fa-facebook"></i>
+                                        <span>Facebook</span>
+                                    </div>
+                                    <div class="source-stats">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 20%;"></div>
+                                        </div>
+                                        <span>20%</span>
+                                    </div>
+                                </div>
+                                <div class="source-item">
+                                    <div class="source-name">
+                                        <i class="fab fa-google"></i>
+                                        <span>Google</span>
+                                    </div>
+                                    <div class="source-stats">
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 15%;"></div>
+                                        </div>
+                                        <span>15%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chatbot List -->
+                <div class="dashboard-row">
+                    <div class="dashboard-card wide-card">
+                        <div class="card-header">
+                            <h2>My Chatbots</h2>
+                            <div class="card-actions">
+                                <button class="btn-primary"><i class="fas fa-plus"></i> New Chatbot</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="chatbot-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Conversations</th>
+                                        <th>Leads</th>
+                                        <th>Last Updated</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="chatbot-name">
+                                                <div class="chatbot-icon blue">
+                                                    <i class="fas fa-robot"></i>
+                                                </div>
+                                                <div>
+                                                    <h4>Sales Assistant</h4>
+                                                    <p>E-commerce</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status active">Active</span></td>
+                                        <td>1,283</td>
+                                        <td>97</td>
+                                        <td>Today</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-chart-bar"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="chatbot-name">
+                                                <div class="chatbot-icon green">
+                                                    <i class="fas fa-robot"></i>
+                                                </div>
+                                                <div>
+                                                    <h4>Support Bot</h4>
+                                                    <p>Customer Service</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status active">Active</span></td>
+                                        <td>964</td>
+                                        <td>53</td>
+                                        <td>Yesterday</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-chart-bar"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="chatbot-name">
+                                                <div class="chatbot-icon orange">
+                                                    <i class="fas fa-robot"></i>
+                                                </div>
+                                                <div>
+                                                    <h4>Appointment Scheduler</h4>
+                                                    <p>Service Business</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><span class="status inactive">Draft</span></td>
+                                        <td>209</td>
+                                        <td>37</td>
+                                        <td>3 days ago</td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-chart-bar"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

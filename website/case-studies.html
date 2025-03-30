@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - ManyChatBot</title>
+    <meta name="description" content="Explore real-world success stories of businesses that have transformed their customer interactions and increased conversions with ManyChatBot.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+        
+        .case-studies-intro {
+            padding: 3rem 0;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .case-studies-intro p {
+            font-size: 1.1rem;
+            color: var(--gray-700);
+        }
+        
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding-bottom: 3rem;
+        }
+        
+        .case-study-card {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .case-study-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+        
+        .case-study-card:hover .case-study-image img {
+            transform: scale(1.05);
+        }
+        
+        .case-study-content {
+            padding: 1.5rem;
+        }
+        
+        .case-study-category {
+            display: inline-block;
+            background-color: rgba(0, 113, 227, 0.1);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .case-study-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .case-study-excerpt {
+            color: var(--gray-700);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .case-study-metrics {
+            display: flex;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+        
+        .metric {
+            flex: 1;
+            text-align: center;
+            padding: 0.5rem;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-md);
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--gray-700);
+        }
+        
+        .case-study-link {
+            text-align: right;
+        }
+        
+        .case-study-link a {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .case-study-link a i {
+            margin-left: 0.5rem;
+            transition: transform var(--transition-fast);
+        }
+        
+        .case-study-link a:hover i {
+            transform: translateX(3px);
+        }
+        
+        .featured-case-study {
+            padding: 4rem 0;
+            background-color: var(--gray-100);
+        }
+        
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .featured-image {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .featured-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .featured-text h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .featured-category {
+            display: inline-block;
+            background-color: rgba(0, 113, 227, 0.1);
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .featured-stat {
+            text-align: center;
+        }
+        
+        .featured-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .featured-stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+        
+        .client-quote {
+            background-color: white;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .client-quote p {
+            font-style: italic;
+            color: var(--gray-800);
+        }
+        
+        .client-quote-author {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        
+        .client-quote-company {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: var(--gray-700);
+        }
+        
+        @media (max-width: 991px) {
+            .case-studies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .featured-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .featured-text {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .featured-stats {
+                flex-wrap: wrap;
+            }
+            
+            .featured-stat {
+                flex-basis: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="ManyChatBot Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#benefits">Benefits</a></li>
+                        <li><a href="index.html#packages">Packages</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#testimonials">Success Stories</a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta">
+                    <a href="index.html#book-consultation" class="btn btn-primary">Book Free Consultation</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate-on-scroll fade-in">Real Results from Real Clients</h1>
+            <p>See how businesses like yours are growing with ManyChatBot</p>
+        </div>
+    </section>
+
+    <!-- Case Studies Intro -->
+    <section class="case-studies-intro">
+        <div class="container">
+            <h2 class="animate-on-scroll fade-in">Our Success Stories</h2>
+            <p>We've helped businesses across various industries automate their customer interactions, increase engagement, and boost conversions. Explore our case studies to see how ManyChatBot can transform your business.</p>
+        </div>
+    </section>
+
+    <!-- Featured Case Study -->
+    <section class="featured-case-study">
+        <div class="container">
+            <div class="featured-content animate-on-scroll fade-in">
+                <div class="featured-image">
+                    <img src="https://via.placeholder.com/600x400?text=Wellness+Clinic+Case+Study" alt="Wellness Clinic Case Study">
+                </div>
+                <div class="featured-text">
+                    <span class="featured-category">Healthcare</span>
+                    <h2>How a Wellness Clinic Increased Bookings by 42%</h2>
+                    <p>Urban Wellness, a holistic health clinic in Miami, was struggling to manage the high volume of inquiries they received through their website and social media. Their team was spending over 20 hours per week manually responding to basic questions, and they were losing potential clients due to delayed responses.</p>
+                    
+                    <div class="featured-stats">
+                        <div class="featured-stat">
+                            <span class="featured-stat-value">42%</span>
+                            <span class="featured-stat-label">Increase in Bookings</span>
+                        </div>
+                        <div class="featured-stat">
+                            <span class="featured-stat-value">20+</span>
+                            <span class="featured-stat-label">Hours Saved Weekly</span>
+                        </div>
+                        <div class="featured-stat">
+                            <span class="featured-stat-value">89%</span>
+                            <span class="featured-stat-label">Response Rate</span>
+                        </div>
+                    </div>
+                    
+                    <p>We implemented a custom chatbot solution that automatically answered common questions, collected visitor information, and scheduled consultations directly into their calendar system.</p>
+                    
+                    <div class="client-quote">
+                        <p>"Since implementing ManyChatBot, our lead conversion rate has increased by 42%. The chatbot engages visitors instantly, captures their information, and books consultations while we're sleeping. It's like having a 24/7 sales team that never takes a break."</p>
+                        <div class="client-quote-author">Sarah Johnson</div>
+                        <div class="client-quote-company">Marketing Director, Urban Wellness</div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary">Read Full Case Study</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Grid -->
+    <section class="case-studies-grid-section">
+        <div class="container">
+            <div class="case-studies-grid animate-on-scroll fade-in">
+                <div class="case-study-card animate-on-scroll slide-up">
+                    <div class="case-study-image">
+                        <img src="https://via.placeholder.com/400x200?text=Real+Estate" alt="Real Estate Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-category">Real Estate</span>
+                        <h3 class="case-study-title">Luxury Real Estate Agency Doubles Lead Quality</h3>
+                        <p class="case-study-excerpt">How an automated chatbot pre-qualified leads and increased the quality of consultations for high-end property listings.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">2x</span>
+                                <span class="metric-label">Lead Quality</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">35%</span>
+                                <span class="metric-label">Cost Reduction</span>
+                            </div>
+                        </div>
+                        <div class="case-study-link">
+                            <a href="#">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-card animate-on-scroll slide-up">
+                    <div class="case-study-image">
+                        <img src="https://via.placeholder.com/400x200?text=E-Commerce" alt="E-Commerce Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-category">E-Commerce</span>
+                        <h3 class="case-study-title">Online Store Reduces Cart Abandonment by 27%</h3>
+                        <p class="case-study-excerpt">A proactive chatbot solution that engaged shoppers at critical points in their buying journey, answering questions and offering assistance.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">27%</span>
+                                <span class="metric-label">Fewer Abandonments</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">18%</span>
+                                <span class="metric-label">Revenue Increase</span>
+                            </div>
+                        </div>
+                        <div class="case-study-link">
+                            <a href="#">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-card animate-on-scroll slide-up">
+                    <div class="case-study-image">
+                        <img src="https://via.placeholder.com/400x200?text=Education" alt="Education Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-category">Education</span>
+                        <h3 class="case-study-title">Online Course Creator Scales Student Onboarding</h3>
+                        <p class="case-study-excerpt">How an educational platform automated their enrollment process and improved student satisfaction with 24/7 support.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">53%</span>
+                                <span class="metric-label">More Enrollments</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4.8</span>
+                                <span class="metric-label">Support Rating</span>
+                            </div>
+                        </div>
+                        <div class="case-study-link">
+                            <a href="#">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-card animate-on-scroll slide-up">
+                    <div class="case-study-image">
+                        <img src="https://via.placeholder.com/400x200?text=Professional+Services" alt="Professional Services Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-category">Professional Services</span>
+                        <h3 class="case-study-title">Law Firm Automates Client Intake Process</h3>
+                        <p class="case-study-excerpt">A specialized chatbot that collected case information, scheduled consultations, and routed inquiries to the appropriate department.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">68%</span>
+                                <span class="metric-label">Time Saved</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">31%</span>
+                                <span class="metric-label">More Clients</span>
+                            </div>
+                        </div>
+                        <div class="case-study-link">
+                            <a href="#">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-card animate-on-scroll slide-up">
+                    <div class="case-study-image">
+                        <img src="https://via.placeholder.com/400x200?text=Fitness" alt="Fitness Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-category">Fitness</span>
+                        <h3 class="case-study-title">Gym Chain Streamlines Membership Sales</h3>
+                        <p class="case-study-excerpt">How a national fitness brand used chatbots to answer questions, schedule tours, and qualify leads for their sales team.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">45%</span>
+                                <span class="metric-label">More Tours</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">22%</span>
+                                <span class="metric-label">Conversion Lift</span>
+                            </div>
+                        </div>
+                        <div class="case-study-link">
+                            <a href="#">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-card animate-on-scroll slide-up">
+                    <div class="case-study-image">
+                        <img src="https://via.placeholder.com/400x200?text=SaaS" alt="SaaS Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-category">SaaS</span>
+                        <h3 class="case-study-title">Software Company Reduces Support Tickets by 40%</h3>
+                        <p class="case-study-excerpt">An intelligent chatbot that resolved common issues instantly and only escalated complex matters to the human support team.</p>
+                        <div class="case-study-metrics">
+                            <div class="metric">
+                                <span class="metric-value">40%</span>
+                                <span class="metric-label">Fewer Tickets</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">3x</span>
+                                <span class="metric-label">Faster Resolution</span>
+                            </div>
+                        </div>
+                        <div class="case-study-link">
+                            <a href="#">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="animate-on-scroll fade-in">Ready to See These Results in Your Business?</h2>
+            <p>Join the hundreds of businesses that have transformed their customer interactions with ManyChatBot.</p>
+            <a href="index.html#book-consultation" class="btn btn-primary btn-large pulse">Book Your Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/logo-white.svg" alt="ManyChatBot Logo">
+                    </div>
+                    <p class="footer-tagline">Stop losing leads while you sleep</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/manychatbots/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@manychatbots/" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/manychatbot/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/manychatbot" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#benefits">Benefits</a></li>
+                        <li><a href="index.html#packages">Packages</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#testimonials">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="chatbot-roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="index.html#faq">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:hello@manychatbots.com">hello@manychatbots.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+18005556789">1-800-555-6789</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Miami, FL</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ManyChatBot. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

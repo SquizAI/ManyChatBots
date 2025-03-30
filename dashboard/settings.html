@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - ManyChatBot Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../website/images/logo.svg" alt="ManyChatBot Logo" class="logo">
+                <span class="close-sidebar"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <span>JS</span>
+                </div>
+                <div class="user-info">
+                    <h4>John Smith</h4>
+                    <p>Professional Plan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="chatbot-builder.html"><i class="fas fa-robot"></i> My Chatbots</a></li>
+                    <li><a href="conversations.html"><i class="fas fa-comments"></i> Conversations</a></li>
+                    <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li class="active"><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="billing.html"><i class="fas fa-credit-card"></i> Billing</a></li>
+                    <li><a href="support.html"><i class="fas fa-headset"></i> Support</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="settings-header">
+                    <h1>Settings</h1>
+                    <p>Manage your account, preferences, and chatbot configurations</p>
+                </div>
+
+                <div class="settings-navigation">
+                    <ul class="nav-tabs">
+                        <li class="active" data-tab="profile">
+                            <i class="fas fa-user"></i> Profile
+                        </li>
+                        <li data-tab="security">
+                            <i class="fas fa-lock"></i> Security
+                        </li>
+                        <li data-tab="notifications">
+                            <i class="fas fa-bell"></i> Notifications
+                        </li>
+                        <li data-tab="integrations">
+                            <i class="fas fa-plug"></i> Integrations
+                        </li>
+                        <li data-tab="billing">
+                            <i class="fas fa-credit-card"></i> Billing
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="settings-content">
+                    <!-- Profile Settings -->
+                    <div class="tab-panel active" id="profile-panel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Profile Information</h2>
+                                <p>Manage your personal information and preferences</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="profile-header">
+                                    <div class="profile-avatar">
+                                        <div class="avatar-container">
+                                            <span>JS</span>
+                                        </div>
+                                        <button class="btn-change-avatar">Change Photo</button>
+                                    </div>
+                                    <div class="profile-subscription">
+                                        <div class="subscription-badge professional">
+                                            Professional Plan
+                                        </div>
+                                        <button class="btn-secondary">Upgrade Plan</button>
+                                    </div>
+                                </div>
+
+                                <form class="profile-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="first-name">First Name</label>
+                                            <input type="text" id="first-name" value="John">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last-name">Last Name</label>
+                                            <input type="text" id="last-name" value="Smith">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="email">Email Address</label>
+                                            <input type="email" id="email" value="john.smith@example.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number</label>
+                                            <input type="tel" id="phone" value="+1 (555) 123-4567">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="company">Company Name</label>
+                                            <input type="text" id="company" value="Smith Enterprises">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="website">Website URL</label>
+                                            <input type="url" id="website" value="https://www.smithenterprises.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group full-width">
+                                            <label for="timezone">Timezone</label>
+                                            <select id="timezone">
+                                                <option value="US/Pacific">US/Pacific (UTC-07:00)</option>
+                                                <option value="US/Eastern">US/Eastern (UTC-04:00)</option>
+                                                <option value="Europe/London">Europe/London (UTC+01:00)</option>
+                                                <option value="Asia/Tokyo">Asia/Tokyo (UTC+09:00)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn-primary">Save Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="tab-panel" id="security-panel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Security</h2>
+                                <p>Manage your account security and authentication</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="security-section">
+                                    <h3>Change Password</h3>
+                                    <form class="security-form">
+                                        <div class="form-group">
+                                            <label for="current-password">Current Password</label>
+                                            <input type="password" id="current-password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="new-password">New Password</label>
+                                            <input type="password" id="new-password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirm-password">Confirm New Password</label>
+                                            <input type="password" id="confirm-password">
+                                        </div>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn-primary">Update Password</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="security-section">
+                                    <h3>Two-Factor Authentication</h3>
+                                    <div class="two-factor-status">
+                                        <div class="status-indicator enabled">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>Two-factor authentication is enabled</span>
+                                        </div>
+                                        <button class="btn-danger">Disable</button>
+                                    </div>
+                                    <p class="security-info">Two-factor authentication adds an extra layer of security to your account by requiring a verification code in addition to your password.</p>
+                                </div>
+
+                                <div class="security-section">
+                                    <h3>Login Sessions</h3>
+                                    <div class="sessions-list">
+                                        <div class="session-item current">
+                                            <div class="session-info">
+                                                <i class="fas fa-laptop"></i>
+                                                <div class="session-details">
+                                                    <div class="session-device">MacBook Pro - Chrome</div>
+                                                    <div class="session-meta">San Francisco, CA - Current Session</div>
+                                                </div>
+                                            </div>
+                                            <button class="btn-text" disabled>Current</button>
+                                        </div>
+                                        <div class="session-item">
+                                            <div class="session-info">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <div class="session-details">
+                                                    <div class="session-device">iPhone 13 - Safari</div>
+                                                    <div class="session-meta">San Francisco, CA - Last active: 2 hours ago</div>
+                                                </div>
+                                            </div>
+                                            <button class="btn-danger-text">Revoke</button>
+                                        </div>
+                                    </div>
+                                    <button class="btn-danger mt-3">Log Out Of All Sessions</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Settings -->
+                    <div class="tab-panel" id="notifications-panel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Notification Preferences</h2>
+                                <p>Manage how and when you receive notifications</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="notification-section">
+                                    <h3>Email Notifications</h3>
+                                    <div class="notification-options">
+                                        <div class="notification-option">
+                                            <div class="option-details">
+                                                <div class="option-title">New Conversations</div>
+                                                <div class="option-description">Get notified when visitors start new conversations</div>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-option">
+                                            <div class="option-details">
+                                                <div class="option-title">Lead Generated</div>
+                                                <div class="option-description">Get notified when a chatbot generates a new lead</div>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-option">
+                                            <div class="option-details">
+                                                <div class="option-title">Human Handoff</div>
+                                                <div class="option-description">Get notified when a conversation requires human assistance</div>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-option">
+                                            <div class="option-details">
+                                                <div class="option-title">Weekly Reports</div>
+                                                <div class="option-description">Get a weekly summary of your chatbot performance</div>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox">
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-option">
+                                            <div class="option-details">
+                                                <div class="option-title">Marketing Updates</div>
+                                                <div class="option-description">Get updates about new features and promotions</div>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox">
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="notification-section">
+                                    <h3>Browser Notifications</h3>
+                                    <div class="notification-options">
+                                        <div class="notification-option">
+                                            <div class="option-details">
+                                                <div class="option-title">Enable Browser Notifications</div>
+                                                <div class="option-description">Allow ManyChatBot to send real-time browser notifications</div>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" checked>
+                                                <span class="toggle-slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p class="notification-info">You must allow notifications in your browser settings for this feature to work.</p>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-primary">Save Preferences</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integrations Settings -->
+                    <div class="tab-panel" id="integrations-panel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Integrations</h2>
+                                <p>Connect your chatbots with other services</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="integrations-grid">
+                                    <div class="integration-card connected">
+                                        <div class="integration-logo">
+                                            <img src="https://via.placeholder.com/50?text=CRM" alt="CRM">
+                                        </div>
+                                        <div class="integration-details">
+                                            <h3>CRM System</h3>
+                                            <p>Connected to Salesforce</p>
+                                        </div>
+                                        <div class="integration-actions">
+                                            <button class="btn-primary btn-sm">Configure</button>
+                                            <button class="btn-danger-text btn-sm">Disconnect</button>
+                                        </div>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo">
+                                            <img src="https://via.placeholder.com/50?text=Slack" alt="Slack">
+                                        </div>
+                                        <div class="integration-details">
+                                            <h3>Slack</h3>
+                                            <p>Get notifications in your Slack workspace</p>
+                                        </div>
+                                        <div class="integration-actions">
+                                            <button class="btn-primary btn-sm">Connect</button>
+                                        </div>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo">
+                                            <img src="https://via.placeholder.com/50?text=Google" alt="Google Analytics">
+                                        </div>
+                                        <div class="integration-details">
+                                            <h3>Google Analytics</h3>
+                                            <p>Track chatbot events in Google Analytics</p>
+                                        </div>
+                                        <div class="integration-actions">
+                                            <button class="btn-primary btn-sm">Connect</button>
+                                        </div>
+                                    </div>
+                                    <div class="integration-card connected">
+                                        <div class="integration-logo">
+                                            <img src="https://via.placeholder.com/50?text=ZD" alt="Zendesk">
+                                        </div>
+                                        <div class="integration-details">
+                                            <h3>Zendesk</h3>
+                                            <p>Connected to help@smithenterprises.com</p>
+                                        </div>
+                                        <div class="integration-actions">
+                                            <button class="btn-primary btn-sm">Configure</button>
+                                            <button class="btn-danger-text btn-sm">Disconnect</button>
+                                        </div>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo">
+                                            <img src="https://via.placeholder.com/50?text=FB" alt="Facebook">
+                                        </div>
+                                        <div class="integration-details">
+                                            <h3>Facebook Messenger</h3>
+                                            <p>Deploy your chatbot on Facebook Messenger</p>
+                                        </div>
+                                        <div class="integration-actions">
+                                            <button class="btn-primary btn-sm">Connect</button>
+                                        </div>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo">
+                                            <img src="https://via.placeholder.com/50?text=API" alt="API">
+                                        </div>
+                                        <div class="integration-details">
+                                            <h3>API Integration</h3>
+                                            <p>Custom integration via our API</p>
+                                        </div>
+                                        <div class="integration-actions">
+                                            <button class="btn-primary btn-sm">View Documentation</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Settings -->
+                    <div class="tab-panel" id="billing-panel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Billing & Subscription</h2>
+                                <p>Manage your subscription plan and payment methods</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="billing-section">
+                                    <h3>Current Plan</h3>
+                                    <div class="plan-details">
+                                        <div class="plan-info">
+                                            <div class="plan-name">Professional Plan</div>
+                                            <div class="plan-price">$49.99<span>/month</span></div>
+                                            <div class="plan-status">Active - Renews on June 15, 2023</div>
+                                        </div>
+                                        <div class="plan-actions">
+                                            <button class="btn-primary">Upgrade Plan</button>
+                                            <button class="btn-secondary">View Plans</button>
+                                        </div>
+                                    </div>
+                                    <div class="plan-features">
+                                        <div class="feature-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Up to 5 chatbots</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>10,000 conversations/month</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Advanced analytics</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>3 team members</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <i class="fas fa-check"></i>
+                                            <span>Email support</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="billing-section">
+                                    <h3>Payment Methods</h3>
+                                    <div class="payment-methods">
+                                        <div class="payment-method">
+                                            <div class="payment-info">
+                                                <i class="fab fa-cc-visa"></i>
+                                                <div class="payment-details">
+                                                    <div class="payment-name">Visa ending in 4242</div>
+                                                    <div class="payment-expiry">Expires 09/2024</div>
+                                                </div>
+                                            </div>
+                                            <div class="payment-actions">
+                                                <div class="payment-status">Default</div>
+                                                <button class="btn-text">Edit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn-secondary mt-3">Add Payment Method</button>
+                                </div>
+
+                                <div class="billing-section">
+                                    <h3>Billing History</h3>
+                                    <div class="billing-history">
+                                        <table class="billing-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Description</th>
+                                                    <th>Amount</th>
+                                                    <th>Status</th>
+                                                    <th>Invoice</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>May 15, 2023</td>
+                                                    <td>Professional Plan - Monthly</td>
+                                                    <td>$49.99</td>
+                                                    <td><span class="status-badge paid">Paid</span></td>
+                                                    <td><a href="#" class="btn-text">Download</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Apr 15, 2023</td>
+                                                    <td>Professional Plan - Monthly</td>
+                                                    <td>$49.99</td>
+                                                    <td><span class="status-badge paid">Paid</span></td>
+                                                    <td><a href="#" class="btn-text">Download</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mar 15, 2023</td>
+                                                    <td>Professional Plan - Monthly</td>
+                                                    <td>$49.99</td>
+                                                    <td><span class="status-badge paid">Paid</span></td>
+                                                    <td><a href="#" class="btn-text">Download</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

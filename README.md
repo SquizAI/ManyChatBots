@@ -280,7 +280,33 @@ To begin working on this project:
 3. Check the development tasks in the `/development` folder
 4. Refer to the diagrams in the `/diagrams` folder for visual guidance
 
-For development setup instructions, see [Technical Guidelines](development/technical_guidelines.md).
+### Setup & Configuration
+
+1. **Server Setup**
+   ```bash
+   cd server
+   npm install
+   cp .env.example .env  # Edit with your actual credentials
+   npm run dev
+   ```
+
+2. **Admin Panel Access**
+   - Access the admin dashboard at `/admin/login.html?demo=true`
+   - For demo mode, use email: `admin@manychatbot.com`
+
+3. **AI & Speech Integration**
+   - OpenAI API: Set `OPENAI_API_KEY` in the .env file
+   - Gemini API: Set `GEMINI_API_KEY` in the .env file
+   - DeepGram Speech-to-Text: Set `DEEPGRAM_API_KEY` in the .env file
+
+4. **Notion Integration**
+   - Create a Notion integration at [notion.so/my-integrations](https://www.notion.so/my-integrations)
+   - Set the integration token as `NOTION_API_KEY` in .env
+   - Share a database with your integration and copy its ID to `NOTION_DATABASE_ID`
+   - Configure the connection in the admin panel under Integrations → Notion
+   - Use the integration to sync users, chatbot conversations, and analytics to Notion
+
+For detailed development setup instructions, see [Technical Guidelines](development/technical_guidelines.md).
 
 ---
 

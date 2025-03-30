@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50">
+  <style>
+    .logo-text { font-family: 'Arial', sans-serif; font-weight: bold; }
+    .primary { fill: #0071e3; }
+    .secondary { fill: #333; }
+  </style>
+  <g>
+    <path class="primary" d="M20,10 C13.925,10 9,14.925 9,21 C9,24.283 10.348,27.184 12.5,29.133 L12.5,40 L20,35 L20,35 C26.075,35 31,30.075 31,24 C31,17.925 26.075,13 20,13 z" />
+    <circle class="primary" cx="17" cy="22" r="2" />
+    <circle class="primary" cx="23" cy="22" r="2" />
+    <path class="secondary" d="M46,15 C39.925,15 35,19.925 35,26 C35,29.283 36.348,32.184 38.5,34.133 L38.5,45 L46,40 L46,40 C52.075,40 57,35.075 57,29 C57,22.925 52.075,18 46,18 z" />
+    <circle class="secondary" cx="43" cy="27" r="2" />
+    <circle class="secondary" cx="49" cy="27" r="2" />
+    <text x="65" y="32" class="logo-text primary">Many</text>
+    <text x="115" y="32" class="logo-text secondary">ChatBot</text>
+  </g>
+</svg>

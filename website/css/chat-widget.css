@@ -1,0 +1,333 @@
+/**
+ * Chat Widget Styles
+ * For the ManyChatBot demo widget on the landing page
+ */
+
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: var(--font-primary);
+}
+
+.chat-widget-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-widget-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.chat-widget-button i {
+    font-size: 24px;
+}
+
+.chat-widget-button .close-icon {
+    display: none;
+}
+
+.chat-widget-button.active .chat-icon {
+    display: none;
+}
+
+.chat-widget-button.active .close-icon {
+    display: block;
+}
+
+.chat-widget-container {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 400px;
+    height: 550px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none;
+    max-width: 90vw;
+}
+
+@media (min-width: 768px) {
+    .chat-widget-container.expanded {
+        width: 550px;
+        height: 650px;
+    }
+}
+
+.expand-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    z-index: 2;
+    transition: all 0.2s ease;
+}
+
+.expand-button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.chat-widget-container.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.chat-widget-header {
+    padding: 15px;
+    background-color: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.chat-widget-header img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-widget-header-text {
+    flex: 1;
+}
+
+.chat-widget-header-text h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.chat-widget-header-text p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.chat-widget-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-message {
+    display: flex;
+    margin-bottom: 10px;
+    max-width: 80%;
+}
+
+.chat-message.bot {
+    align-self: flex-start;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.chat-message-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.chat-message.user .chat-message-avatar {
+    margin-right: 0;
+    margin-left: 8px;
+    background-color: var(--gray-500);
+}
+
+.chat-message-content {
+    padding: 14px 16px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-line;
+    max-width: 85%;
+}
+
+.chat-message.bot .chat-message-content {
+    background-color: var(--gray-200);
+    border-bottom-left-radius: 5px;
+}
+
+/* Styling for markdown-like formatting in bot messages */
+.ai-model-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background-color: rgba(0, 113, 227, 0.1);
+    color: var(--primary);
+}
+
+.chat-message.bot .chat-message-content strong,
+.chat-message.bot .chat-message-content b {
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.chat-message.bot .chat-message-content ul {
+    padding-left: 18px;
+    margin: 8px 0;
+}
+
+.chat-message.bot .chat-message-content li {
+    margin-bottom: 6px;
+}
+
+.chat-message.user .chat-message-content {
+    background-color: var(--primary);
+    color: white;
+    border-bottom-right-radius: 5px;
+}
+
+.chat-message-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.chat-message-option {
+    padding: 6px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--primary);
+    background-color: white;
+    color: var(--primary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chat-message-option:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.chat-widget-input {
+    padding: 15px;
+    border-top: 1px solid var(--gray-300);
+    display: flex;
+}
+
+.chat-widget-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--gray-300);
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.chat-widget-input input:focus {
+    border-color: var(--primary);
+}
+
+.chat-widget-input button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.chat-widget-input button:hover {
+    background-color: var(--primary-dark);
+}
+
+.chat-widget-input button:disabled {
+    background-color: var(--gray-400);
+    cursor: not-allowed;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: var(--gray-400);
+    margin-right: 4px;
+    animation: typing 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-widget-container {
+        width: calc(100vw - 40px);
+        height: 60vh;
+    }
+}

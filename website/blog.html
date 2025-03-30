@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - ManyChatBot</title>
+    <meta name="description" content="Explore our blog for insights, tips, and success stories about chatbot automation and customer engagement strategies.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+        
+        .blog-content {
+            padding: 3rem 0;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 2rem;
+        }
+        
+        .blog-posts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .blog-post {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-post-image {
+            position: relative;
+            overflow: hidden;
+            min-height: 100%;
+        }
+        
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+        
+        .blog-post:hover .blog-post-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-post-category {
+            display: inline-block;
+            background-color: rgba(0, 113, 227, 0.1);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-post-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-post-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            transition: color var(--transition-fast);
+        }
+        
+        .blog-post:hover .blog-post-title {
+            color: var(--primary);
+        }
+        
+        .blog-post-excerpt {
+            margin-bottom: 1rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+        
+        .blog-post-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .blog-post-link i {
+            margin-left: 0.3rem;
+            transition: transform var(--transition-fast);
+        }
+        
+        .blog-post-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        .featured-post {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .featured-post .blog-post-content {
+            padding: 2rem;
+        }
+        
+        .featured-post .blog-post-title {
+            font-size: 1.8rem;
+        }
+        
+        .featured-post .blog-post-excerpt {
+            font-size: 1.1rem;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar-widget {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 1.5rem;
+        }
+        
+        .sidebar-widget h3 {
+            margin-bottom: 1.25rem;
+            font-size: 1.3rem;
+            color: var(--gray-800);
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .sidebar-search {
+            position: relative;
+        }
+        
+        .sidebar-search input {
+            width: 100%;
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+        }
+        
+        .sidebar-search button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .popular-posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .popular-post {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .popular-post-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .popular-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .popular-post-content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .popular-post-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+        
+        .popular-post-date {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .category-item:last-child {
+            border-bottom: none;
+        }
+        
+        .category-name {
+            color: var(--gray-800);
+            transition: color var(--transition-fast);
+        }
+        
+        .category-name:hover {
+            color: var(--primary);
+        }
+        
+        .category-count {
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+            font-size: 0.8rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 1rem;
+        }
+        
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag-item {
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+            padding: 0.3rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .tag-item:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .newsletter-form {
+            margin-top: 1rem;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .pagination-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--border-radius-md);
+            background-color: white;
+            color: var(--gray-700);
+            font-weight: 600;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .pagination-item:hover {
+            background-color: var(--gray-200);
+        }
+        
+        .pagination-item.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .pagination-arrow {
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 991px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-post .blog-post-image {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .blog-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-post-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="ManyChatBot Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#benefits">Benefits</a></li>
+                        <li><a href="index.html#packages">Packages</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#testimonials">Success Stories</a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta">
+                    <a href="index.html#book-consultation" class="btn btn-primary">Book Free Consultation</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate-on-scroll fade-in">Chatbot Insights & Strategy</h1>
+            <p>Stay up-to-date with the latest in chatbot technology, customer engagement, and automation strategies</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-container">
+                <div class="blog-posts animate-on-scroll fade-in">
+                    <article class="blog-post featured-post">
+                        <div class="blog-post-image">
+                            <div class="featured-badge">Featured</div>
+                            <img src="https://via.placeholder.com/600x400?text=Chatbot+ROI" alt="The ROI of Chatbots">
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="blog-post-category">Strategy</span>
+                            <h2 class="blog-post-title">The ROI of Chatbots: How to Calculate Your Return on Investment</h2>
+                            <div class="blog-post-meta">
+                                <span><i class="far fa-calendar"></i> March 20, 2025</span>
+                                <span><i class="far fa-user"></i> Michael Chen</span>
+                            </div>
+                            <p class="blog-post-excerpt">Implementing a chatbot is a significant investment for any business. But how do you measure the return? In this comprehensive guide, we break down the key metrics to track, from direct cost savings to lead conversion improvements, and provide a framework for calculating your chatbot's ROI.</p>
+                            <a href="blog-post.html" class="blog-post-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-post animate-on-scroll slide-up">
+                        <div class="blog-post-image">
+                            <img src="https://via.placeholder.com/400x300?text=24/7+Support" alt="24/7 Customer Support">
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="blog-post-category">Customer Service</span>
+                            <h2 class="blog-post-title">How to Provide 24/7 Customer Support Without Hiring More Staff</h2>
+                            <div class="blog-post-meta">
+                                <span><i class="far fa-calendar"></i> March 15, 2025</span>
+                                <span><i class="far fa-user"></i> Sarah Johnson</span>
+                            </div>
+                            <p class="blog-post-excerpt">The expectation for instant customer service has never been higher. Learn how businesses are using chatbots to provide round-the-clock support without expanding their team or budget.</p>
+                            <a href="blog-post.html" class="blog-post-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-post animate-on-scroll slide-up">
+                        <div class="blog-post-image">
+                            <img src="https://via.placeholder.com/400x300?text=Chatbot+Psychology" alt="Chatbot Psychology">
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="blog-post-category">Psychology</span>
+                            <h2 class="blog-post-title">The Psychology of Chatbot Interactions: Why They Work So Well</h2>
+                            <div class="blog-post-meta">
+                                <span><i class="far fa-calendar"></i> March 10, 2025</span>
+                                <span><i class="far fa-user"></i> Dr. Emily Rodriguez</span>
+                            </div>
+                            <p class="blog-post-excerpt">What makes chatbots such effective communicators? We dive into the psychological principles behind successful automated conversations and why some users actually prefer interacting with chatbots over humans.</p>
+                            <a href="blog-post.html" class="blog-post-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-post animate-on-scroll slide-up">
+                        <div class="blog-post-image">
+                            <img src="https://via.placeholder.com/400x300?text=Lead+Qualification" alt="Lead Qualification">
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="blog-post-category">Sales</span>
+                            <h2 class="blog-post-title">5 Ways Chatbots Are Revolutionizing Lead Qualification</h2>
+                            <div class="blog-post-meta">
+                                <span><i class="far fa-calendar"></i> March 5, 2025</span>
+                                <span><i class="far fa-user"></i> James Wilson</span>
+                            </div>
+                            <p class="blog-post-excerpt">Stop wasting your sales team's time on unqualified leads. Discover how advanced chatbots are pre-qualifying prospects with unprecedented accuracy, ensuring your team only speaks with the most promising opportunities.</p>
+                            <a href="blog-post.html" class="blog-post-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-post animate-on-scroll slide-up">
+                        <div class="blog-post-image">
+                            <img src="https://via.placeholder.com/400x300?text=Conversational+Design" alt="Conversational Design">
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="blog-post-category">Design</span>
+                            <h2 class="blog-post-title">Conversational Design: Creating Chatbots That Feel Human</h2>
+                            <div class="blog-post-meta">
+                                <span><i class="far fa-calendar"></i> February 28, 2025</span>
+                                <span><i class="far fa-user"></i> Alex Patel</span>
+                            </div>
+                            <p class="blog-post-excerpt">The art and science of conversational design is what separates good chatbots from great ones. Learn the principles of creating natural, engaging chat flows that keep users coming back for more.</p>
+                            <a href="blog-post.html" class="blog-post-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-post animate-on-scroll slide-up">
+                        <div class="blog-post-image">
+                            <img src="https://via.placeholder.com/400x300?text=Chatbot+Metrics" alt="Chatbot Metrics">
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="blog-post-category">Analytics</span>
+                            <h2 class="blog-post-title">Key Metrics Every Business Should Track with Their Chatbot</h2>
+                            <div class="blog-post-meta">
+                                <span><i class="far fa-calendar"></i> February 22, 2025</span>
+                                <span><i class="far fa-user"></i> Sophia Lee</span>
+                            </div>
+                            <p class="blog-post-excerpt">Are you measuring the right things with your chatbot? We break down the essential KPIs that tell you whether your chatbot is truly delivering value, from engagement rates to resolution times.</p>
+                            <a href="blog-post.html" class="blog-post-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <div class="pagination">
+                        <a href="#" class="pagination-arrow"><i class="fas fa-chevron-left"></i></a>
+                        <a href="#" class="pagination-item active">1</a>
+                        <a href="#" class="pagination-item">2</a>
+                        <a href="#" class="pagination-item">3</a>
+                        <a href="#" class="pagination-item">4</a>
+                        <a href="#" class="pagination-arrow"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <aside class="sidebar animate-on-scroll slide-in-right">
+                    <div class="sidebar-widget">
+                        <h3>Search</h3>
+                        <div class="sidebar-search">
+                            <input type="text" placeholder="Search articles...">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Popular Posts</h3>
+                        <div class="popular-posts-list">
+                            <a href="blog-post.html" class="popular-post">
+                                <div class="popular-post-image">
+                                    <img src="https://via.placeholder.com/100x100?text=ROI" alt="The ROI of Chatbots">
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4 class="popular-post-title">The ROI of Chatbots: How to Calculate Your Return</h4>
+                                    <span class="popular-post-date">March 20, 2025</span>
+                                </div>
+                            </a>
+                            
+                            <a href="blog-post.html" class="popular-post">
+                                <div class="popular-post-image">
+                                    <img src="https://via.placeholder.com/100x100?text=AI" alt="AI and Chatbots">
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4 class="popular-post-title">The Future of AI in Customer Service Automation</h4>
+                                    <span class="popular-post-date">February 15, 2025</span>
+                                </div>
+                            </a>
+                            
+                            <a href="blog-post.html" class="popular-post">
+                                <div class="popular-post-image">
+                                    <img src="https://via.placeholder.com/100x100?text=Case+Study" alt="E-commerce Case Study">
+                                </div>
+                                <div class="popular-post-content">
+                                    <h4 class="popular-post-title">How an E-commerce Store Reduced Cart Abandonment by 27%</h4>
+                                    <span class="popular-post-date">January 30, 2025</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <div class="categories-list">
+                            <a href="#" class="category-item">
+                                <span class="category-name">Strategy</span>
+                                <span class="category-count">8</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Customer Service</span>
+                                <span class="category-count">12</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Sales</span>
+                                <span class="category-count">7</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Psychology</span>
+                                <span class="category-count">5</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Design</span>
+                                <span class="category-count">9</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Analytics</span>
+                                <span class="category-count">6</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Tags</h3>
+                        <div class="tags-list">
+                            <a href="#" class="tag-item">Chatbots</a>
+                            <a href="#" class="tag-item">AI</a>
+                            <a href="#" class="tag-item">Customer Service</a>
+                            <a href="#" class="tag-item">Lead Generation</a>
+                            <a href="#" class="tag-item">Sales</a>
+                            <a href="#" class="tag-item">ROI</a>
+                            <a href="#" class="tag-item">Automation</a>
+                            <a href="#" class="tag-item">Strategy</a>
+                            <a href="#" class="tag-item">E-commerce</a>
+                            <a href="#" class="tag-item">ManyChat</a>
+                            <a href="#" class="tag-item">Make.com</a>
+                            <a href="#" class="tag-item">Integrations</a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to our newsletter for the latest updates and insights on chatbot technology and customer engagement strategies.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit" class="btn btn-primary btn-full">Subscribe</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/logo-white.svg" alt="ManyChatBot Logo">
+                    </div>
+                    <p class="footer-tagline">Stop losing leads while you sleep</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/manychatbots/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@manychatbots/" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/manychatbot/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/manychatbot" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#benefits">Benefits</a></li>
+                        <li><a href="index.html#packages">Packages</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#testimonials">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="chatbot-roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="index.html#faq">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:hello@manychatbots.com">hello@manychatbots.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+18005556789">1-800-555-6789</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Miami, FL</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ManyChatBot. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

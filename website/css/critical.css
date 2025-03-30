@@ -1,0 +1,152 @@
+/* Critical Path CSS - Only what's needed for initial render */
+:root {
+    --primary: #0071e3;
+    --primary-dark: #0055b3;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --border-radius-md: 0.5rem;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --transition-normal: 0.3s ease;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    transition: var(--transition-normal);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.hero {
+    padding: 10rem 0 6rem;
+    background: linear-gradient(135deg, #f6f9fc 0%, #eef5ff 100%);
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 540px;
+}
+
+.hero-headline {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.text-highlight {
+    color: var(--primary);
+    position: relative;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 991px) {
+    .hero .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content {
+        order: 1;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .hero-image {
+        order: 0;
+        text-align: center;
+    }
+    
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero {
+        padding: 8rem 0 4rem;
+    }
+    
+    .hero-headline {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .primary { fill: #0071e3; }
+    .primary-light { fill: #cce0f5; }
+    .secondary { fill: #6c757d; }
+    .bg-light { fill: #f8f9fa; }
+    .white { fill: #ffffff; }
+    .gray-100 { fill: #f8f9fa; }
+    .gray-200 { fill: #e9ecef; }
+    .gray-300 { fill: #dee2e6; }
+    .gray-700 { fill: #495057; }
+    .gray-800 { fill: #343a40; }
+    .gray-900 { fill: #212529; }
+  </style>
+  
+  <!-- Background Shape -->
+  <rect class="bg-light" x="0" y="0" width="600" height="400" rx="10" />
+  
+  <!-- Device Frame -->
+  <rect class="gray-800" x="100" y="60" width="280" height="300" rx="15" />
+  <rect class="white" x="110" y="70" width="260" height="280" rx="8" />
+  
+  <!-- Chat Interface -->
+  <rect class="primary" x="110" y="70" width="260" height="50" rx="8" />
+  <text x="140" y="100" font-family="Arial" font-size="16" fill="white">ManyChatBot</text>
+  <circle class="white" cx="350" cy="95" r="10" />
+  
+  <!-- Chat Messages -->
+  <rect class="gray-200" x="130" y="140" width="200" height="40" rx="20" />
+  <text x="150" y="165" font-family="Arial" font-size="12" class="gray-700">Hi! How can I help you today?</text>
+  
+  <rect class="primary-light" x="180" y="190" width="170" height="40" rx="20" />
+  <text x="200" y="215" font-family="Arial" font-size="12" class="gray-700">I need more information</text>
+  
+  <rect class="gray-200" x="130" y="240" width="220" height="60" rx="20" />
+  <text x="150" y="265" font-family="Arial" font-size="12" class="gray-700">Sure! I can help with that. Would</text>
+  <text x="150" y="285" font-family="Arial" font-size="12" class="gray-700">you like to book a consultation?</text>
+  
+  <!-- Person -->
+  <circle class="gray-300" cx="450" cy="150" r="70" />
+  <rect class="gray-700" x="410" y="230" width="80" height="130" rx="10" />
+  
+  <!-- Connected Lines -->
+  <path class="primary" stroke="#0071e3" stroke-width="3" fill="none" d="M 360,100 C 400,100 420,140 420,150" />
+  <path class="primary" stroke="#0071e3" stroke-width="3" fill="none" d="M 350,160 C 380,170 400,180 410,200" />
+  <path class="primary" stroke="#0071e3" stroke-width="3" fill="none" d="M 330,270 C 360,280 380,270 400,250" />
+  
+  <!-- Decorative Elements -->
+  <circle class="primary" cx="50" cy="50" r="20" opacity="0.5" />
+  <circle class="primary" cx="550" cy="350" r="30" opacity="0.5" />
+  <circle class="secondary" cx="500" cy="80" r="15" opacity="0.3" />
+  <circle class="secondary" cx="80" cy="320" r="25" opacity="0.3" />
+</svg>

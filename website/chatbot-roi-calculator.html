@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot ROI Calculator - ManyChatBot</title>
+    <meta name="description" content="Calculate the potential return on investment from implementing ManyChatBot's automated chatbot solutions for your business.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+        
+        .calculator-section {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .calculator-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .calculator-intro {
+            margin-bottom: 2.5rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .calculator-intro p {
+            font-size: 1.1rem;
+            color: var(--gray-700);
+        }
+        
+        .calculator-form {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .calculator-form h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius-sm);
+            font-size: 1rem;
+        }
+        
+        .range-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+        
+        .results-container {
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .results-container h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .results-summary {
+            margin-bottom: 2rem;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-weight: 500;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .main-result {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .main-result-label {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .main-result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .main-result-period {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .calculator-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .calculator-note {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt="ManyChatBot Logo">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#benefits">Benefits</a></li>
+                        <li><a href="index.html#packages">Packages</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#testimonials">Success Stories</a></li>
+                    </ul>
+                </nav>
+                <div class="header-cta">
+                    <a href="index.html#book-consultation" class="btn btn-primary">Book Free Consultation</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate-on-scroll fade-in">Chatbot ROI Calculator</h1>
+            <p>See the financial impact of implementing ManyChatBot for your business</p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-intro">
+                <h2 class="animate-on-scroll fade-in">Calculate Your Potential Savings</h2>
+                <p>Our chatbot solutions automate customer interactions, saving you time and money while increasing conversions. Use this calculator to see how much you could save by implementing ManyChatBot.</p>
+            </div>
+            
+            <div class="calculator-container animate-on-scroll fade-in">
+                <div class="calculator-form">
+                    <h3>Input Your Business Details</h3>
+                    <form id="roi-calculator-form">
+                        <div class="form-group">
+                            <label for="monthly-visitors">Monthly Website/Social Media Visitors</label>
+                            <input type="number" id="monthly-visitors" name="monthly-visitors" min="100" value="5000">
+                            <div class="range-label">
+                                <span>100</span>
+                                <span>100,000+</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="conversion-rate">Current Lead Conversion Rate (%)</label>
+                            <input type="number" id="conversion-rate" name="conversion-rate" min="0.1" max="100" step="0.1" value="2">
+                            <div class="range-label">
+                                <span>0.1%</span>
+                                <span>100%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="average-value">Average Customer Value ($)</label>
+                            <input type="number" id="average-value" name="average-value" min="1" value="500">
+                            <div class="range-label">
+                                <span>$1</span>
+                                <span>$10,000+</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="response-hours">Hours Spent Responding to Inquiries (weekly)</label>
+                            <input type="number" id="response-hours" name="response-hours" min="1" max="168" value="15">
+                            <div class="range-label">
+                                <span>1 hr</span>
+                                <span>168 hrs</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hourly-cost">Hourly Cost of Staff ($)</label>
+                            <input type="number" id="hourly-cost" name="hourly-cost" min="10" value="25">
+                            <div class="range-label">
+                                <span>$10</span>
+                                <span>$100+</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="results-container">
+                    <h3>Your Potential ROI</h3>
+                    <div class="results-summary">
+                        <div class="result-item">
+                            <span class="result-label">Current Monthly Leads</span>
+                            <span class="result-value" id="current-leads">100</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Projected Monthly Leads</span>
+                            <span class="result-value" id="projected-leads">140</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Additional Monthly Revenue</span>
+                            <span class="result-value" id="additional-revenue">$20,000</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Monthly Time Savings</span>
+                            <span class="result-value" id="time-savings">45 hours</span>
+                        </div>
+                        
+                        <div class="result-item">
+                            <span class="result-label">Monthly Labor Cost Savings</span>
+                            <span class="result-value" id="labor-savings">$1,125</span>
+                        </div>
+                    </div>
+                    
+                    <div class="main-result">
+                        <div class="main-result-label">Total Monthly Benefit</div>
+                        <div class="main-result-value" id="total-benefit">$21,125</div>
+                        <div class="main-result-period">per month</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calculator-cta">
+                <a href="index.html#book-consultation" class="btn btn-primary btn-large pulse">Book a Free Consultation</a>
+                <p class="calculator-note">Speak with our experts to get a personalized ROI calculation specific to your business needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/logo-white.svg" alt="ManyChatBot Logo">
+                    </div>
+                    <p class="footer-tagline">Stop losing leads while you sleep</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/manychatbots/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@manychatbots/" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/manychatbot/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/manychatbot" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#benefits">Benefits</a></li>
+                        <li><a href="index.html#packages">Packages</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#testimonials">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="chatbot-roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="support.html">Support Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:hello@manychatbots.com">hello@manychatbots.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+18005556789">1-800-555-6789</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Miami, FL</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ManyChatBot. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('roi-calculator-form');
+            const inputs = form.querySelectorAll('input');
+            
+            // Calculate initial values
+            calculateROI();
+            
+            // Add event listeners to inputs
+            inputs.forEach(input => {
+                input.addEventListener('input', calculateROI);
+            });
+            
+            function calculateROI() {
+                // Get input values
+                const monthlyVisitors = parseFloat(document.getElementById('monthly-visitors').value) || 5000;
+                const conversionRate = parseFloat(document.getElementById('conversion-rate').value) || 2;
+                const averageValue = parseFloat(document.getElementById('average-value').value) || 500;
+                const responseHours = parseFloat(document.getElementById('response-hours').value) || 15;
+                const hourlyCost = parseFloat(document.getElementById('hourly-cost').value) || 25;
+                
+                // Calculate current metrics
+                const currentLeads = Math.round(monthlyVisitors * (conversionRate / 100));
+                
+                // Calculate projected improvements with chatbot
+                const improvedConversionRate = conversionRate * 1.4; // Assume 40% increase in conversion rate
+                const projectedLeads = Math.round(monthlyVisitors * (improvedConversionRate / 100));
+                const additionalLeads = projectedLeads - currentLeads;
+                const additionalRevenue = additionalLeads * averageValue;
+                
+                // Calculate time and cost savings
+                const timeSavingsPercent = 0.75; // Assume 75% time savings
+                const timeSavingsHours = responseHours * 4 * timeSavingsPercent; // Monthly (4 weeks)
+                const laborSavings = timeSavingsHours * hourlyCost;
+                
+                // Calculate total benefit
+                const totalBenefit = additionalRevenue + laborSavings;
+                
+                // Update results
+                document.getElementById('current-leads').textContent = currentLeads;
+                document.getElementById('projected-leads').textContent = projectedLeads;
+                document.getElementById('additional-revenue').textContent = formatCurrency(additionalRevenue);
+                document.getElementById('time-savings').textContent = Math.round(timeSavingsHours) + ' hours';
+                document.getElementById('labor-savings').textContent = formatCurrency(laborSavings);
+                document.getElementById('total-benefit').textContent = formatCurrency(totalBenefit);
+            }
+            
+            function formatCurrency(value) {
+                return '$' + Math.round(value).toLocaleString('en-US');
+            }
+        });
+    </script>
+</body>
+</html>

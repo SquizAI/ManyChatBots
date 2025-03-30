@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - ManyChatBot Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/analytics.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../website/images/logo.svg" alt="ManyChatBot Logo" class="logo">
+                <span class="close-sidebar"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <span>JS</span>
+                </div>
+                <div class="user-info">
+                    <h4>John Smith</h4>
+                    <p>Professional Plan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="chatbot-builder.html"><i class="fas fa-robot"></i> My Chatbots</a>
+                    </li>
+                    <li>
+                        <a href="conversations.html"><i class="fas fa-comments"></i> Conversations</a>
+                    </li>
+                    <li class="active">
+                        <a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                    <li>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                    <li>
+                        <a href="billing.html"><i class="fas fa-credit-card"></i> Billing</a>
+                    </li>
+                    <li>
+                        <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="help">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="analytics-header">
+                    <div class="header-left">
+                        <h1>Analytics</h1>
+                        <p>Detailed insights and performance metrics for your chatbots</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="date-range-picker">
+                            <select id="date-range">
+                                <option value="7d">Last 7 days</option>
+                                <option value="30d">Last 30 days</option>
+                                <option value="90d">Last 90 days</option>
+                                <option value="custom">Custom range</option>
+                            </select>
+                        </div>
+                        <div class="chatbot-selector">
+                            <select id="chatbot-select">
+                                <option value="all">All Chatbots</option>
+                                <option value="sales-assistant">Sales Assistant</option>
+                                <option value="support-bot">Support Bot</option>
+                                <option value="lead-gen">Lead Generator</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary export-btn">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KPI Summary Cards -->
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Total Conversations</h3>
+                            <div class="kpi-icon blue">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-value">8,542</div>
+                        <div class="kpi-comparison">
+                            <span class="positive">+12.5%</span> vs previous period
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Leads Generated</h3>
+                            <div class="kpi-icon green">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-value">623</div>
+                        <div class="kpi-comparison">
+                            <span class="positive">+8.7%</span> vs previous period
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Conversion Rate</h3>
+                            <div class="kpi-icon purple">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-value">7.3%</div>
+                        <div class="kpi-comparison">
+                            <span class="negative">-1.2%</span> vs previous period
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Average Session Time</h3>
+                            <div class="kpi-icon orange">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="kpi-value">2m 46s</div>
+                        <div class="kpi-comparison">
+                            <span class="positive">+18.3%</span> vs previous period
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conversation Trends Chart -->
+                <div class="chart-container full-width">
+                    <div class="chart-header">
+                        <h2>Conversation Trends</h2>
+                        <div class="chart-controls">
+                            <div class="chart-type">
+                                <button class="active" data-chart-type="conversations">Conversations</button>
+                                <button data-chart-type="leads">Leads</button>
+                                <button data-chart-type="conversion">Conversion</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <canvas id="trends-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="chart-grid">
+                    <!-- Traffic Sources -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>Traffic Sources</h2>
+                            <div class="chart-actions">
+                                <button class="btn-icon" data-tooltip="View Details">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="sources-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- User Engagement -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>User Engagement</h2>
+                            <div class="chart-actions">
+                                <button class="btn-icon" data-tooltip="View Details">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="engagement-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Conversation Outcomes -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>Conversation Outcomes</h2>
+                            <div class="chart-actions">
+                                <button class="btn-icon" data-tooltip="View Details">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="outcomes-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- User Satisfaction -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>User Satisfaction</h2>
+                            <div class="chart-actions">
+                                <button class="btn-icon" data-tooltip="View Details">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="satisfaction-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Topics -->
+                <div class="chart-container full-width">
+                    <div class="chart-header">
+                        <h2>Popular Topics & Questions</h2>
+                        <div class="chart-actions">
+                            <button class="btn-secondary">View All Topics</button>
+                        </div>
+                    </div>
+                    <div class="chart-body">
+                        <div class="topics-table-container">
+                            <table class="topics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Topic/Question</th>
+                                        <th>Frequency</th>
+                                        <th>Avg. Response Time</th>
+                                        <th>Satisfaction</th>
+                                        <th>Conversion Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>What are your pricing plans?</td>
+                                        <td>
+                                            <div class="frequency-bar">
+                                                <div class="bar" style="width: 85%;"></div>
+                                                <span>342</span>
+                                            </div>
+                                        </td>
+                                        <td>1.2s</td>
+                                        <td>
+                                            <div class="satisfaction-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <span>4.5</span>
+                                            </div>
+                                        </td>
+                                        <td>12.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>How do I integrate the chatbot with my website?</td>
+                                        <td>
+                                            <div class="frequency-bar">
+                                                <div class="bar" style="width: 70%;"></div>
+                                                <span>287</span>
+                                            </div>
+                                        </td>
+                                        <td>2.1s</td>
+                                        <td>
+                                            <div class="satisfaction-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span>4.0</span>
+                                            </div>
+                                        </td>
+                                        <td>8.7%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Do you offer a free trial?</td>
+                                        <td>
+                                            <div class="frequency-bar">
+                                                <div class="bar" style="width: 65%;"></div>
+                                                <span>265</span>
+                                            </div>
+                                        </td>
+                                        <td>0.9s</td>
+                                        <td>
+                                            <div class="satisfaction-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <span>4.7</span>
+                                            </div>
+                                        </td>
+                                        <td>15.2%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Can I customize the chatbot's appearance?</td>
+                                        <td>
+                                            <div class="frequency-bar">
+                                                <div class="bar" style="width: 55%;"></div>
+                                                <span>223</span>
+                                            </div>
+                                        </td>
+                                        <td>1.5s</td>
+                                        <td>
+                                            <div class="satisfaction-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span>4.1</span>
+                                            </div>
+                                        </td>
+                                        <td>9.8%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>How does the AI learn from my website?</td>
+                                        <td>
+                                            <div class="frequency-bar">
+                                                <div class="bar" style="width: 45%;"></div>
+                                                <span>186</span>
+                                            </div>
+                                        </td>
+                                        <td>2.3s</td>
+                                        <td>
+                                            <div class="satisfaction-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span>3.9</span>
+                                            </div>
+                                        </td>
+                                        <td>7.5%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Device & Browser Breakdown -->
+                <div class="chart-grid">
+                    <!-- Device Breakdown -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>Device Breakdown</h2>
+                            <div class="chart-actions">
+                                <button class="btn-icon" data-tooltip="View Details">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="device-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Browser Breakdown -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h2>Browser Breakdown</h2>
+                            <div class="chart-actions">
+                                <button class="btn-icon" data-tooltip="View Details">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="browser-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Geographic Distribution -->
+                <div class="chart-container full-width">
+                    <div class="chart-header">
+                        <h2>Geographic Distribution</h2>
+                        <div class="chart-actions">
+                            <button class="btn-secondary">View Full Report</button>
+                        </div>
+                    </div>
+                    <div class="chart-body map-container">
+                        <div id="world-map" class="world-map">
+                            <!-- World map visualization will be rendered here -->
+                            <img src="https://via.placeholder.com/1200x400?text=World+Map+Visualization" alt="World Map" class="placeholder-map">
+                        </div>
+                        <div class="top-locations">
+                            <h3>Top Locations</h3>
+                            <div class="location-list">
+                                <div class="location-item">
+                                    <span class="location-name">United States</span>
+                                    <div class="location-bar">
+                                        <div class="bar" style="width: 75%;"></div>
+                                        <span>75%</span>
+                                    </div>
+                                </div>
+                                <div class="location-item">
+                                    <span class="location-name">United Kingdom</span>
+                                    <div class="location-bar">
+                                        <div class="bar" style="width: 45%;"></div>
+                                        <span>45%</span>
+                                    </div>
+                                </div>
+                                <div class="location-item">
+                                    <span class="location-name">Canada</span>
+                                    <div class="location-bar">
+                                        <div class="bar" style="width: 35%;"></div>
+                                        <span>35%</span>
+                                    </div>
+                                </div>
+                                <div class="location-item">
+                                    <span class="location-name">Australia</span>
+                                    <div class="location-bar">
+                                        <div class="bar" style="width: 25%;"></div>
+                                        <span>25%</span>
+                                    </div>
+                                </div>
+                                <div class="location-item">
+                                    <span class="location-name">Germany</span>
+                                    <div class="location-bar">
+                                        <div class="bar" style="width: 20%;"></div>
+                                        <span>20%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>
