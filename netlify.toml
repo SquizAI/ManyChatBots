@@ -3,17 +3,33 @@
   publish = "website"
   command = "cp -r dashboard admin website/ && echo 'Copied dashboard and admin to website directory'"
 
-# CORS headers for the client dashboard
+# Global security headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none';"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# CORS headers for the client dashboard - more secure
 [[headers]]
   for = "/dashboard/*"
   [headers.values]
-    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Origin = "https://manychatbot.netlify.app"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, Authorization"
 
-# CORS headers for the admin dashboard
+# CORS headers for the admin dashboard - more secure
 [[headers]]
   for = "/admin/*"
   [headers.values]
-    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Origin = "https://manychatbot.netlify.app"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, Authorization"
 
 # Redirects for dashboard navigation
 [[redirects]]
