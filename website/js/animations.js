@@ -3,14 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mark document as JS-enabled
     document.documentElement.classList.add('js-enabled');
     
-    // Make all animated elements visible immediately for better user experience
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        el.classList.add('visible');
-    });
+    // FORCE ALL ELEMENTS TO BE VISIBLE IMMEDIATELY
+    // This is a drastic fix to ensure elements don't disappear
+    setTimeout(function() {
+        // Force all sections to be visible
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '1';
+            section.style.visibility = 'visible';
+            section.style.display = 'block';
+        });
+        
+        // Force all animated elements to be visible
+        document.querySelectorAll('.animate-on-scroll, .benefit-card, .package-card, .process-step, .key-benefits, .benefits-grid').forEach(el => {
+            el.classList.add('visible');
+            el.style.opacity = '1';
+            el.style.visibility = 'visible';
+            el.style.display = 'block';
+        });
+    }, 500);
+    
     // Get all elements with animation classes
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     
-    // Function to check if an element is in viewport
+    // Function to check if an element is in viewport - only used to ADD visible class, never remove
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -19,13 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
     
-    // Function to handle scroll events
+    // Function to handle scroll events - ONLY ADDS visible class, never removes it
     function handleScroll() {
         animatedElements.forEach(element => {
-            if (isInViewport(element)) {
+            if (isInViewport(element) || true) { // Force all elements to be visible regardless of viewport
                 element.classList.add('visible');
             }
-            // Don't remove visible class once it's added
         });
     }
     
