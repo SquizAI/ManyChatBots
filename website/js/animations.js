@@ -3,29 +3,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mark document as JS-enabled
     document.documentElement.classList.add('js-enabled');
     
-    // FORCE ALL ELEMENTS TO BE VISIBLE IMMEDIATELY
-    // This is a drastic fix to ensure elements don't disappear
+    // Make elements visible with a more targeted approach
     setTimeout(function() {
-        // Force all sections to be visible
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '1';
-            section.style.visibility = 'visible';
-            section.style.display = 'block';
+        // Add visible class to key elements without modifying their display properties
+        document.querySelectorAll('.key-benefits, .benefits-grid, .packages, .process').forEach(section => {
+            if (section.classList.contains('animate-on-scroll')) {
+                section.classList.add('visible');
+            }
         });
         
-        // Force all animated elements to be visible
-        document.querySelectorAll('.animate-on-scroll, .benefit-card, .package-card, .process-step, .key-benefits, .benefits-grid').forEach(el => {
-            el.classList.add('visible');
-            el.style.opacity = '1';
-            el.style.visibility = 'visible';
-            el.style.display = 'block';
+        // Make all important content cards visible
+        document.querySelectorAll('.benefit-card, .package-card, .process-step').forEach(el => {
+            if (el.classList.contains('animate-on-scroll')) {
+                el.classList.add('visible');
+            }
         });
-    }, 500);
+    }, 300);
     
     // Get all elements with animation classes
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     
-    // Function to check if an element is in viewport - only used to ADD visible class, never remove
+    // Function to check if an element is in viewport
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -34,10 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
     
-    // Function to handle scroll events - ONLY ADDS visible class, never removes it
+    // Function to handle scroll events - only adds visible class, never removes it
     function handleScroll() {
         animatedElements.forEach(element => {
-            if (isInViewport(element) || true) { // Force all elements to be visible regardless of viewport
+            // Once an element is visible, keep it visible
+            if (isInViewport(element) || element.classList.contains('visible')) {
                 element.classList.add('visible');
             }
         });
