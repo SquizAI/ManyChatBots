@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isInViewport(element)) {
                 element.classList.add('visible');
             }
+            // Don't remove visible class once it's added
         });
     }
     
